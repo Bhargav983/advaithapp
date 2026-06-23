@@ -1,0 +1,96 @@
+<resources>
+    <string name="app_name">Advaith App</string>
+    <string name="nav_transcriptions_recordings">Transcriptions
+&amp; recordings</string>
+    <string name="text_1">Scan</string>
+    <string name="text_2">Reconnect</string>
+    <string name="text_3">Disconnect</string>
+    <string name="text_4">Set Time</string>
+    <string name="text_22">Connecting...</string>
+    <string name="text_5">Get Version</string>
+    <string name="text_6">Take Picture</string>
+    <string name="text_7">Record Video</string>
+    <string name="text_8">Record Audio</string>
+    <string name="text_9">Smart Picture Recognition</string>
+    <string name="text_10">BT Pair</string>
+    <string name="text_11">Register Report Listener</string>
+    <string name="text_12">Battery</string>
+    <string name="text_13">Read Volume</string>
+    <string name="text_14">Read number of media on glasses</string>
+    <string name="text_15">BLE+WiFi P2P Data Download</string>
+    <string name="text_16">Dump OTA server info</string>
+    <string name="text_17">Test pull-mode OTA (writeIpToSoc)</string>
+    <string name="scan_device">Scan Device</string>
+
+    <string name="battery_opt_title">Keep CyanBridge Running</string>
+    <string name="battery_opt_status_on">Status: Battery optimization is ON for CyanBridge</string>
+    <string name="battery_opt_status_off">Status: Battery optimization is OFF for CyanBridge</string>
+    <string name="battery_opt_body">Some midrange/low-end phones may disconnect Bluetooth devices when CyanBridge is in the background or when you close the app. To keep your glasses connected, disable battery optimization for CyanBridge.</string>
+    <string name="battery_opt_disable_button">Disable Battery Optimization</string>
+    <string name="battery_opt_open_list_button">Open Battery Optimization Settings</string>
+    <string name="battery_opt_open_app_info_button">Open App Info</string>
+    <string name="battery_opt_lock_app_title">Also lock CyanBridge in Recents</string>
+    <string name="battery_opt_lock_app_body">Open Recents, find CyanBridge, then use the app menu (often a long-press or tap the app icon) and choose Lock/Pin/Keep open. This prevents the system from clearing the app.</string>
+    <string name="battery_opt_done_button">I Locked It</string>
+    <string name="battery_opt_skip_button">Don\'t show again</string>
+    <string name="battery_opt_still_on_toast">Battery optimization still appears to be ON. Please disable it, then tap "I Locked It" again.</string>
+    <string name="battery_opt_not_supported">Battery optimization settings are not available on this Android version.</string>
+    <string name="battery_opt_cant_open_settings">Could not open settings on this device.</string>
+
+    <string name="welcome_title">Welcome to CyanBridge</string>
+    <string name="welcome_body">Let\'s get you set up with your smart glasses. We need to configure a few things to ensure a stable connection.</string>
+    <string name="welcome_button">Start Setup</string>
+    <string name="app_lock_guide_title">Prevent RAM Cleanup</string>
+    <string name="app_lock_guide_body">Android often closes apps running in the background to save RAM. To avoid disconnections, please \"Lock\" CyanBridge in your Recents menu.</string>
+    <string name="app_lock_guide_instructions">1. Swipe up from the bottom (or tap the Square button) to see recent apps.\n2. Find CyanBridge.\n3. Tap the icon at the top or long-press the preview.\n4. Select \"Lock this app\" or the Lock icon.</string>
+    <string name="app_lock_guide_button">Finish Setup</string>
+
+    <!-- Local agent automation (AccessibilityService) -->
+    <string name="local_agent_accessibility_service_label">Local Agent Automation</string>
+    <string name="local_agent_accessibility_service_description">Enables on-device automation primitives (read screen text, click, scroll, back/home) for the local agent.</string>
+
+    <!-- Legacy/compat: kept for code added by local-agent-service worktree -->
+    <string name="local_agent_accessibility_description">Local agent screen observer (MVP)</string>
+
+    <!-- Onboarding: Daily Facts -->
+    <string name="onboarding_daily_facts_title">Daily Facts &amp; Diary</string>
+    <string name="onboarding_daily_facts_desc">Get a daily notification to review facts about your day, creating a personal diary.</string>
+    <string name="onboarding_daily_facts_details">Each evening, you\'ll receive a notification asking you to confirm facts about your day. This creates an automatic diary that helps the AI remember important events, people, and experiences. The more you use it, the more personalized your AI assistant becomes.</string>
+
+    <!-- Onboarding: Screen Capture -->
+    <string name="onboarding_screen_capture_title">Screen Memory</string>
+    <string name="onboarding_screen_capture_desc">Like Windows Recall - automatically capture and remember what\'s on your screen.</string>
+    <string name="onboarding_screen_capture_details">The app can periodically capture text from your screen to help the AI assist you better. You can blacklist sensitive apps like banking apps, password managers, and messaging apps. All captures are stored locally on your device.</string>
+
+    <!-- Onboarding: Audio Capture -->
+    <string name="onboarding_audio_capture_title">Continuous Audio Recording</string>
+    <string name="onboarding_audio_capture_desc">Automatically record audio from your glasses for transcription and daily summaries.</string>
+    <string name="onboarding_audio_capture_details">When enabled, the app records audio from your glasses in 15-minute chunks, then transcribes it for automatic diary/summary generation. You can review and delete recordings at any time. All audio stays on your device.</string>
+
+    <!-- Onboarding: Agent Personality -->
+    <string name="onboarding_agent_personality_title">Personalize Your AI</string>
+    <string name="onboarding_agent_personality_desc">Customize how the AI assistant behaves and what it knows about you.</string>
+    <string name="onboarding_agent_personality_details">You can customize the agent\'s personality (how it talks, its tone) and provide facts about yourself (your job, hobbies, family, preferences). This makes the AI more personal and helpful. You can edit these anytime in Settings.</string>
+
+    <!-- Onboarding: Local Storage -->
+    <string name="onboarding_local_storage_title">Your Data Stays on Your Device</string>
+    <string name="onboarding_local_storage_desc">All your data is encrypted and stored locally on your phone.</string>
+    <string name="onboarding_local_storage_details">Your chats, screen captures, recordings, and AI memories are encrypted using industry-standard encryption and stored only on your device. Future cloud sync options will be available with a Pro Subscription, allowing you to securely sync across devices. Cloud options are currently greyed out until you activate Pro.</string>
+
+    <!-- Onboarding: Pro Subscription -->
+    <string name="onboarding_pro_sub_title">Unlock Premium Features</string>
+    <string name="onboarding_pro_sub_desc">Optional cloud features for power users.</string>
+    <string name="onboarding_pro_sub_details">You can use the ENTIRE app completely FREE with local models running on your phone (Qwen 2.5 1.7B, Whisper for transcription, etc.). No internet required!\n\nPro Subscription is ONLY needed for:\n• Cloud AI models (API costs money)\n• Cloud memory sync across devices\n\n🔒 STEALTH MODE FIRMWARE (coming soon)\nThe upcoming Stealth Mode enables silent capture of audio, photos, and videos from your glasses. This requires a one-time payment of the Standard or Max Pro plan for the modded firmware flash. You can cancel your subscription afterward and keep Stealth Mode indefinitely!\n\n🎁 FREE TRIAL\nNew users get a free 1-month Pro trial (rate-limited among all free trial users). Cancel anytime.</string>
+
+    <!-- Chat deletion -->
+    <string name="delete_chat_title">Delete Chat</string>
+    <string name="delete_chat_message">Delete \"%s\"? This cannot be undone.</string>
+    <string name="chat_deleted">Chat deleted</string>
+    <string name="open_synced_media">View synced photos and videos</string>
+    <string name="synced_media_title">Synced photos and videos</string>
+    <string name="synced_media_folder_hint">Showing files from: %1$s</string>
+    <string name="synced_media_empty">No synced photos or videos found yet.</string>
+    <string name="synced_media_open_failed">Unable to open this media item.</string>
+    <string name="synced_media_video_badge">VIDEO</string>
+    <string name="auto_audio_speech_extend">Extend loop when speech detected (avoid cutting conversations)</string>
+</resources>

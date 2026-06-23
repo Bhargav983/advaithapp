@@ -1,0 +1,44 @@
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# CLI relay server scratch
+/tools/_relay_tmp/
+
+# Signing (do not commit secrets)
+keystore.properties
+
+# APK files
+*.apk
+
+# Node modules
+node_modules/
+
+# Build artifacts
+*/build/
+build/
+moonshine-voice/build/
+node_modules/
+
+# Local model artifacts (never commit weights)
+*.gguf
+*.gguf.part
+*.bin
+*.safetensors
+app/src/main/assets/models/
+app/src/main/ml/
+
+# Termux server docs (local only)
+TERMUX_SSH_TAILSCALE_RUNBOOK.md

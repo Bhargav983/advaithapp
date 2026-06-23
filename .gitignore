@@ -1,0 +1,57 @@
+# IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Gradle
+.gradle/
+build/
+*/build/
+local.properties
+
+# Android
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.ap_
+*.dex
+*.class
+
+# Binaries and SDKs
+# Keep the SDK needed for the build
+# !glasses_sdk_*.aar 
+
+# Large firmware and metadata files
+*.swu
+*.json
+!package.json
+firmware_dump/
+
+# iOS
+*.xcworkspace
+*.xcodeproj
+DerivedData/
+Pods/
+QCSDK.framework/
+
+# Device data dumps
+com.glasssutdio.wear/
+
+# Reference docs and decompiled apps (Keeping repo clean)
+HeyCyanOfficialApp/
+Android_SDK_Development_Guide_CN.pdf
+
+# Node.js
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local tooling (very large / machine-specific)
+tools/
+
+# Local experiments (do not commit)
+android/CyanBridge/app/src/main/java/com/fersaiyan/cyanbridge/ui/AutoPairManager.kt
