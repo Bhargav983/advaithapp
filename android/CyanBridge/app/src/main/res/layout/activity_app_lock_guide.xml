@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_dark"
+    android:background="@color/titan_app_background"
     android:orientation="vertical"
     android:padding="24dp">
 
@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/app_lock_guide_title"
-        android:textColor="@color/cyan_accent"
+        android:textColor="@color/titan_primary"
         android:textSize="22sp"
         android:textStyle="bold" />
 
@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/app_lock_guide_body"
-        android:textColor="@color/text_primary"
+        android:textColor="@color/titan_primary_label"
         android:textSize="16sp" />
 
     <TextView
@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/app_lock_guide_instructions"
-        android:textColor="@color/text_secondary"
+        android:textColor="@color/titan_secondary_label"
         android:textSize="16sp" />
 
     <!-- A placeholder for an image if needed later -->
@@ -35,7 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginTop="20dp"
-        android:background="@color/card_bg" />
+        android:background="@color/titan_card_background" />
 
     <Space
         android:layout_width="match_parent"
@@ -46,8 +46,8 @@
         android:id="@+id/btn_finish"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/cyan_accent"
+        android:backgroundTint="@color/titan_primary_button_tint"
         android:text="@string/app_lock_guide_button"
-        android:textColor="@color/bg_dark" />
+        android:textColor="@color/titan_button_text" />
 
 </LinearLayout>

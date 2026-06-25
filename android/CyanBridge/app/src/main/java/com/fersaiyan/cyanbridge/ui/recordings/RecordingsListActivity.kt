@@ -498,7 +498,7 @@ class RecordingsListActivity : AppCompatActivity() {
 
         val tv = TextView(this).apply {
             text = initialMessage
-            setTextColor(getColor(R.color.text_secondary))
+            setTextColor(getColor(R.color.titan_secondary_label))
             val mt = (10 * resources.displayMetrics.density).toInt()
             setPadding(0, mt, 0, 0)
         }

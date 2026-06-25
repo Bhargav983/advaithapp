@@ -4,18 +4,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_dark"
+    android:background="@color/titan_app_background"
     android:fitsSystemWindows="true">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/bg_dark"
+        android:background="@color/titan_app_background"
         app:title="Chats list"
         app:navigationIcon="@drawable/ic_menu_hamburger"
-        app:navigationIconTint="@color/text_primary"
-        app:titleTextColor="@color/text_primary"
+        app:navigationIconTint="@color/titan_primary_label"
+        app:titleTextColor="@color/titan_primary_label"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Chat"
-            android:textColor="@color/text_primary"
+            android:textColor="@color/titan_primary_label"
             android:textStyle="bold"
             android:textSize="18sp" />
 
@@ -39,7 +39,7 @@
             android:contentDescription="Chat appearance"
             android:padding="8dp"
             android:src="@android:drawable/ic_menu_more"
-            android:tint="@color/text_primary" />
+            android:tint="@color/titan_primary_label" />
 
     </com.google.android.material.appbar.MaterialToolbar>
 
@@ -56,7 +56,7 @@
         android:paddingEnd="10dp"
         android:paddingBottom="4dp"
         android:text="Local model: not selected"
-        android:textColor="@color/text_secondary"
+        android:textColor="@color/titan_secondary_label"
         android:textSize="12sp"
         android:visibility="gone"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
@@ -80,7 +80,7 @@
             android:id="@+id/tv_daily_summary_progress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/text_secondary"
+            android:textColor="@color/titan_secondary_label"
             android:textSize="11sp"
             android:text="Daily summary bullets: 0/0" />
 
@@ -90,8 +90,8 @@
             android:layout_height="6dp"
             android:layout_marginTop="4dp"
             android:indeterminate="false"
-            app:indicatorColor="@color/cyan_accent"
-            app:trackColor="@color/card_bg"
+            app:indicatorColor="@color/titan_primary"
+            app:trackColor="@color/titan_card_background"
             app:trackCornerRadius="3dp" />
 
     </LinearLayout>
@@ -109,7 +109,7 @@
         android:paddingEnd="10dp"
         android:paddingBottom="4dp"
         android:text="Queue integrity: ok"
-        android:textColor="@color/text_secondary"
+        android:textColor="@color/titan_secondary_label"
         android:textSize="11sp"
         android:visibility="gone"
         app:layout_constraintTop_toBottomOf="@id/layout_daily_summary_progress"
@@ -143,7 +143,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Recording active"
-                android:textColor="@color/bg_dark"
+                android:textColor="@color/titan_button_text"
                 android:textStyle="bold" />
 
             <Button
@@ -151,7 +151,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Stop"
-                android:backgroundTint="@color/bg_dark"
+                android:backgroundTint="@color/titan_app_background"
                 android:textColor="@color/danger" />
         </LinearLayout>
 
@@ -201,7 +201,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Thinking"
-            android:textColor="@color/text_secondary"
+            android:textColor="@color/titan_secondary_label"
             android:textSize="14sp" />
 
         <TextView
@@ -209,7 +209,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="."
-            android:textColor="@color/text_secondary"
+            android:textColor="@color/titan_secondary_label"
             android:textSize="14sp" />
 
         <TextView
@@ -217,7 +217,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="."
-            android:textColor="@color/text_secondary"
+            android:textColor="@color/titan_secondary_label"
             android:textSize="14sp" />
 
         <TextView
@@ -225,7 +225,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="."
-            android:textColor="@color/text_secondary"
+            android:textColor="@color/titan_secondary_label"
             android:textSize="14sp" />
     </LinearLayout>
 
@@ -234,7 +234,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:padding="12dp"
-        android:background="@color/bg_dark"
+        android:background="@color/titan_app_background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation">
@@ -257,7 +257,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="1 image attached"
-                android:textColor="@color/text_secondary"
+                android:textColor="@color/titan_secondary_label"
                 android:textSize="11sp" />
 
             <ImageButton
@@ -267,7 +267,7 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="Clear attachments"
                 android:src="@android:drawable/ic_menu_close_clear_cancel"
-                android:tint="@color/text_secondary" />
+                android:tint="@color/titan_secondary_label" />
 
         </LinearLayout>
 
@@ -277,8 +277,8 @@
             android:layout_height="wrap_content"
             android:hint="Message"
             app:boxBackgroundMode="filled"
-            app:boxBackgroundColor="@color/card_bg"
-            app:hintTextColor="@color/text_secondary"
+            app:boxBackgroundColor="@color/titan_card_background"
+            app:hintTextColor="@color/titan_secondary_label"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/btn_attach_media"
             app:layout_constraintTop_toBottomOf="@id/layout_pending_attachments"
@@ -291,7 +291,7 @@
                 android:inputType="textMultiLine"
                 android:minLines="1"
                 android:maxLines="4"
-                android:textColor="@color/text_primary" />
+                android:textColor="@color/titan_primary_label" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <ImageButton
@@ -302,7 +302,7 @@
             android:background="@drawable/bg_circle_send"
             android:contentDescription="Attach image"
             android:src="@android:drawable/ic_menu_gallery"
-            android:tint="@color/bg_dark"
+            android:tint="@color/titan_button_text"
             app:layout_constraintEnd_toStartOf="@id/btn_record_audio"
             app:layout_constraintTop_toTopOf="@id/btn_send"
             app:layout_constraintBottom_toBottomOf="@id/btn_send" />
@@ -315,7 +315,7 @@
             android:background="@drawable/bg_circle_send"
             android:contentDescription="Record audio"
             android:src="@android:drawable/ic_btn_speak_now"
-            android:tint="@color/bg_dark"
+            android:tint="@color/titan_button_text"
             app:layout_constraintEnd_toStartOf="@id/btn_send"
             app:layout_constraintTop_toTopOf="@id/btn_send"
             app:layout_constraintBottom_toBottomOf="@id/btn_send" />
@@ -328,7 +328,7 @@
             android:background="@drawable/bg_circle_send"
             android:contentDescription="Send"
             android:src="@android:drawable/ic_menu_send"
-            android:tint="@color/bg_dark"
+            android:tint="@color/titan_button_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
@@ -339,7 +339,7 @@
         android:id="@+id/bottom_navigation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/card_bg"
+        android:background="@color/titan_card_background"
         app:itemIconTint="@color/bottom_nav_item"
         app:itemTextColor="@color/bottom_nav_item"
         app:menu="@menu/bottom_nav_menu"

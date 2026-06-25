@@ -22,13 +22,17 @@ class WelcomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_welcome)
 
         findViewById<Button>(R.id.btn_start).setOnClickListener {
-            startActivity(Intent(this, BatteryOptimizationGuideActivity::class.java))
-            finish()
+            startSetup()
         }
     }
 
     private fun isOnboardingCompleted(): Boolean {
         val prefs = getSharedPreferences("cyanbridge_prefs", Context.MODE_PRIVATE)
         return prefs.getBoolean("onboarding_completed", false)
+    }
+
+    private fun startSetup() {
+        startActivity(Intent(this, BatteryOptimizationGuideActivity::class.java))
+        finish()
     }
 }

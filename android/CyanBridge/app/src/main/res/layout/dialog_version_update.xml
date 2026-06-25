@@ -4,13 +4,13 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="24dp"
-    android:background="@color/card_bg">
+    android:background="@color/titan_card_background">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="New Version Available!"
-        android:textColor="@color/cyan_accent"
+        android:textColor="@color/titan_primary"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:text="A new version of the app is available."
-        android:textColor="@color/text_primary"
+        android:textColor="@color/titan_primary_label"
         android:textSize="14sp" />
 
     <TextView
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="We recommend updating to get the latest features and bug fixes."
-        android:textColor="@color/text_secondary"
+        android:textColor="@color/titan_secondary_label"
         android:textSize="13sp" />
 
     <Button
@@ -37,8 +37,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Download from GitHub"
-        android:backgroundTint="@color/cyan_accent"
-        android:textColor="@color/bg_dark" />
+        android:backgroundTint="@color/titan_primary_button_tint"
+        android:textColor="@color/titan_button_text" />
 
     <Button
         android:id="@+id/btn_download_playstore"
@@ -47,7 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Get on Play Store (Coming Soon)"
-        android:textColor="@color/text_secondary"
+        android:textColor="@color/titan_secondary_label"
         android:enabled="false" />
 
     <Button
@@ -57,6 +57,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Remind Me Later"
-        android:textColor="@color/text_secondary" />
+        android:textColor="@color/titan_secondary_label" />
 
 </LinearLayout>

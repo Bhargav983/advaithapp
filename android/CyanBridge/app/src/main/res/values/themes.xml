@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="Theme.CyanBridgeManager" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- CyanBridge AI branding (MVP) -->
-        <item name="colorPrimary">@color/cyan_accent</item>
-        <item name="colorPrimaryVariant">@color/card_bg</item>
-        <item name="colorSecondary">@color/cyan_accent</item>
+        <item name="colorPrimary">@color/titan_primary</item>
+        <item name="colorPrimaryVariant">@color/titan_primary_dark</item>
+        <item name="colorSecondary">@color/titan_accent</item>
+        <item name="colorSurface">@color/titan_screen_background</item>
+        <item name="colorOnSurface">@color/titan_primary_label</item>
 
-        <item name="android:windowBackground">@color/bg_dark</item>
-        <item name="android:statusBarColor">@color/bg_dark</item>
-        <item name="android:navigationBarColor">@color/card_bg</item>
+        <item name="android:windowBackground">@color/titan_app_background</item>
+        <item name="android:statusBarColor">@color/titan_primary_dark</item>
+        <item name="android:navigationBarColor">@color/titan_screen_background</item>
 
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

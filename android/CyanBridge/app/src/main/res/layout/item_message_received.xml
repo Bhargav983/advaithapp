@@ -14,7 +14,7 @@
         android:paddingTop="8dp"
         android:paddingEnd="12dp"
         android:paddingBottom="8dp"
-        android:textColor="@color/text_primary"
+        android:textColor="@color/titan_primary_label"
         android:textSize="16sp"
         app:layout_constrainedWidth="true"
         app:layout_constraintWidth_percent="0.8"

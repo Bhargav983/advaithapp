@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:paddingHorizontal="14dp"
         android:paddingVertical="10dp"
-        android:textColor="@color/text_primary"
+        android:textColor="@color/titan_primary_label"
         android:textSize="14sp"
         android:maxWidth="320dp"
         android:background="@drawable/bg_bubble_assistant"

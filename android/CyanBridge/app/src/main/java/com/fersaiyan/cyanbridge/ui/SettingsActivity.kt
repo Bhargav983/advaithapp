@@ -379,8 +379,8 @@ Rules:
         val input = android.widget.EditText(this).apply {
             hint = "Describe what happened (optional)"
             minLines = 3
-            setTextColor(ContextCompat.getColor(this@SettingsActivity, R.color.text_primary))
-            setHintTextColor(ContextCompat.getColor(this@SettingsActivity, R.color.text_secondary))
+            setTextColor(ContextCompat.getColor(this@SettingsActivity, R.color.titan_primary_label))
+            setHintTextColor(ContextCompat.getColor(this@SettingsActivity, R.color.titan_secondary_label))
         }
 
         AlertDialog.Builder(this)
@@ -520,24 +520,24 @@ Rules:
             binding.tvProBannerTitle.text = "Pro Subscription Settings"
             binding.tvProBannerSubtitle.text = "Current plan: $plan. Manage premium features and perks."
             binding.tvProBannerBadge.text = "SETTINGS"
-            binding.tvProBannerBadge.setTextColor(ContextCompat.getColor(this, R.color.cyan_accent))
+            binding.tvProBannerBadge.setTextColor(ContextCompat.getColor(this, R.color.titan_primary))
             binding.btnConfigureProSubscription.setStrokeColor(
-                ContextCompat.getColor(this, R.color.cyan_accent)
+                ContextCompat.getColor(this, R.color.titan_primary)
             )
             binding.btnConfigureProSubscription.setCardBackgroundColor(
-                ContextCompat.getColor(this, R.color.cyan_dim)
+                ContextCompat.getColor(this, R.color.titan_primary_light)
             )
         } else {
             binding.tvProBannerTitle.text = "Pro Subscription"
             binding.tvProBannerSubtitle.text =
                 "Unlock premium features and help fund new smartglasses support."
             binding.tvProBannerBadge.text = "OPEN"
-            binding.tvProBannerBadge.setTextColor(ContextCompat.getColor(this, R.color.cyan_accent))
+            binding.tvProBannerBadge.setTextColor(ContextCompat.getColor(this, R.color.titan_primary))
             binding.btnConfigureProSubscription.setStrokeColor(
-                ContextCompat.getColor(this, R.color.text_secondary)
+                ContextCompat.getColor(this, R.color.titan_secondary_label)
             )
             binding.btnConfigureProSubscription.setCardBackgroundColor(
-                ContextCompat.getColor(this, R.color.card_bg)
+                ContextCompat.getColor(this, R.color.titan_card_background)
             )
         }
     }
@@ -964,8 +964,8 @@ Rules:
     ) {
         val input = android.widget.EditText(this).apply {
             inputType = android.text.InputType.TYPE_CLASS_TEXT or android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD
-            setTextColor(ContextCompat.getColor(this@SettingsActivity, R.color.text_primary))
-            setHintTextColor(ContextCompat.getColor(this@SettingsActivity, R.color.text_secondary))
+            setTextColor(ContextCompat.getColor(this@SettingsActivity, R.color.titan_primary_label))
+            setHintTextColor(ContextCompat.getColor(this@SettingsActivity, R.color.titan_secondary_label))
             hint = "Passphrase"
         }
 
@@ -995,8 +995,8 @@ Rules:
             setSelection(text?.length ?: 0)
             setHint(hint)
             minLines = 8
-            setTextColor(ContextCompat.getColor(this@SettingsActivity, R.color.text_primary))
-            setHintTextColor(ContextCompat.getColor(this@SettingsActivity, R.color.text_secondary))
+            setTextColor(ContextCompat.getColor(this@SettingsActivity, R.color.titan_primary_label))
+            setHintTextColor(ContextCompat.getColor(this@SettingsActivity, R.color.titan_secondary_label))
         }
         AlertDialog.Builder(this)
             .setTitle(title)
@@ -1030,7 +1030,7 @@ Rules:
         val on = isLocalAgentAccessibilityServiceEnabled()
         binding.tvLocalAgentAccessibilityStatus.text = if (on) "Enabled" else "Disabled"
         binding.tvLocalAgentAccessibilityStatus.setTextColor(
-            ContextCompat.getColor(this, if (on) R.color.cyan_accent else R.color.danger)
+            ContextCompat.getColor(this, if (on) R.color.titan_primary else R.color.danger)
         )
     }
 

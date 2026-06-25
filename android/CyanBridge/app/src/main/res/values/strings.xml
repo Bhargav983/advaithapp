@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Advaith App</string>
+    <string name="app_name">Titan Smart</string>
     <string name="nav_transcriptions_recordings">Transcriptions
 &amp; recordings</string>
     <string name="text_1">Scan</string>
@@ -22,27 +22,27 @@
     <string name="text_17">Test pull-mode OTA (writeIpToSoc)</string>
     <string name="scan_device">Scan Device</string>
 
-    <string name="battery_opt_title">Keep CyanBridge Running</string>
-    <string name="battery_opt_status_on">Status: Battery optimization is ON for CyanBridge</string>
-    <string name="battery_opt_status_off">Status: Battery optimization is OFF for CyanBridge</string>
-    <string name="battery_opt_body">Some midrange/low-end phones may disconnect Bluetooth devices when CyanBridge is in the background or when you close the app. To keep your glasses connected, disable battery optimization for CyanBridge.</string>
+    <string name="battery_opt_title">Keep Titan Smart Running</string>
+    <string name="battery_opt_status_on">Status: Battery optimization is ON for Titan Smart</string>
+    <string name="battery_opt_status_off">Status: Battery optimization is OFF for Titan Smart</string>
+    <string name="battery_opt_body">Some midrange/low-end phones may disconnect Bluetooth devices when Titan Smart is in the background or when you close the app. To keep your glasses connected, disable battery optimization for Titan Smart.</string>
     <string name="battery_opt_disable_button">Disable Battery Optimization</string>
     <string name="battery_opt_open_list_button">Open Battery Optimization Settings</string>
     <string name="battery_opt_open_app_info_button">Open App Info</string>
-    <string name="battery_opt_lock_app_title">Also lock CyanBridge in Recents</string>
-    <string name="battery_opt_lock_app_body">Open Recents, find CyanBridge, then use the app menu (often a long-press or tap the app icon) and choose Lock/Pin/Keep open. This prevents the system from clearing the app.</string>
+    <string name="battery_opt_lock_app_title">Also lock Titan Smart in Recents</string>
+    <string name="battery_opt_lock_app_body">Open Recents, find Titan Smart, then use the app menu (often a long-press or tap the app icon) and choose Lock/Pin/Keep open. This prevents the system from clearing the app.</string>
     <string name="battery_opt_done_button">I Locked It</string>
     <string name="battery_opt_skip_button">Don\'t show again</string>
     <string name="battery_opt_still_on_toast">Battery optimization still appears to be ON. Please disable it, then tap "I Locked It" again.</string>
     <string name="battery_opt_not_supported">Battery optimization settings are not available on this Android version.</string>
     <string name="battery_opt_cant_open_settings">Could not open settings on this device.</string>
 
-    <string name="welcome_title">Welcome to CyanBridge</string>
+    <string name="welcome_title">Welcome to Titan Smart</string>
     <string name="welcome_body">Let\'s get you set up with your smart glasses. We need to configure a few things to ensure a stable connection.</string>
     <string name="welcome_button">Start Setup</string>
     <string name="app_lock_guide_title">Prevent RAM Cleanup</string>
-    <string name="app_lock_guide_body">Android often closes apps running in the background to save RAM. To avoid disconnections, please \"Lock\" CyanBridge in your Recents menu.</string>
-    <string name="app_lock_guide_instructions">1. Swipe up from the bottom (or tap the Square button) to see recent apps.\n2. Find CyanBridge.\n3. Tap the icon at the top or long-press the preview.\n4. Select \"Lock this app\" or the Lock icon.</string>
+    <string name="app_lock_guide_body">Android often closes apps running in the background to save RAM. To avoid disconnections, please \"Lock\" Titan Smart in your Recents menu.</string>
+    <string name="app_lock_guide_instructions">1. Swipe up from the bottom (or tap the Square button) to see recent apps.\n2. Find Titan Smart.\n3. Tap the icon at the top or long-press the preview.\n4. Select \"Lock this app\" or the Lock icon.</string>
     <string name="app_lock_guide_button">Finish Setup</string>
 
     <!-- Local agent automation (AccessibilityService) -->

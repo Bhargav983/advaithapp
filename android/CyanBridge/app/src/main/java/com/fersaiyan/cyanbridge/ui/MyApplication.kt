@@ -45,6 +45,7 @@ class MyApplication : Application(){
         application = this
         instance = this
         CONTEXT = applicationContext
+        TouchTargetInstaller.register(this)
         initBle()
 
         // Keep the BLE control channel connected while the app process is alive.

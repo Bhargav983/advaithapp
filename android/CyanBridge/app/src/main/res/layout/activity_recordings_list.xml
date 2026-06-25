@@ -4,16 +4,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_dark"
+    android:background="@color/titan_app_background"
     android:fitsSystemWindows="true">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/bg_dark"
+        android:background="@color/titan_app_background"
         app:title="@string/nav_transcriptions_recordings"
-        app:titleTextColor="@color/text_primary"
+        app:titleTextColor="@color/titan_primary_label"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -35,8 +35,8 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="10dp"
         android:text="@string/open_synced_media"
-        android:textColor="@color/cyan_accent"
-        android:backgroundTint="@color/card_bg"
+        android:textColor="@color/titan_primary"
+        android:backgroundTint="@color/titan_secondary_button_tint"
         app:layout_constraintTop_toBottomOf="@id/meeting_recording_banner"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -46,7 +46,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="No recordings yet. Start a meeting capture to create one."
-        android:textColor="@color/text_secondary"
+        android:textColor="@color/titan_secondary_label"
         android:textSize="14sp"
         android:gravity="center"
         android:padding="24dp"
@@ -70,7 +70,7 @@
         android:id="@+id/bottom_navigation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/card_bg"
+        android:background="@color/titan_card_background"
         app:itemIconTint="@color/bottom_nav_item"
         app:itemTextColor="@color/bottom_nav_item"
         app:menu="@menu/bottom_nav_menu"

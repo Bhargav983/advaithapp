@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_dark"
+    android:background="@color/titan_app_background"
     android:fitsSystemWindows="true">
 
     <!-- Meeting capture banner (visible while recording) -->
@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Recording active"
-                android:textColor="@color/bg_dark"
+                android:textColor="@color/titan_button_text"
                 android:textStyle="bold" />
 
             <Button
@@ -41,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Stop"
-                android:backgroundTint="@color/bg_dark"
+                android:backgroundTint="@color/titan_app_background"
                 android:textColor="@color/danger" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
@@ -51,7 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Privacy Settings"
-        android:textColor="@color/text_primary"
+        android:textColor="@color/titan_primary_label"
         android:textSize="20sp"
         android:textStyle="bold"
         android:layout_marginTop="12dp"
@@ -64,7 +64,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Privacy-first defaults. Transcript storage is OFF by default."
-        android:textColor="@color/text_secondary"
+        android:textColor="@color/titan_secondary_label"
         android:textSize="14sp"
         android:layout_marginTop="6dp"
         android:layout_marginHorizontal="16dp"
@@ -81,10 +81,10 @@
         android:clickable="true"
         android:focusable="true"
         android:foreground="?attr/selectableItemBackground"
-        app:cardBackgroundColor="@color/card_bg"
+        app:cardBackgroundColor="@color/titan_card_background"
         app:cardCornerRadius="14dp"
         app:cardElevation="2dp"
-        app:strokeColor="#2A5168"
+        app:strokeColor="@color/titan_border"
         app:strokeWidth="1dp"
         app:layout_constraintTop_toBottomOf="@id/subtitle"
         app:layout_constraintStart_toStartOf="parent"
@@ -108,7 +108,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Pro Subscription"
-                    android:textColor="@color/text_primary"
+                    android:textColor="@color/titan_primary_label"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
@@ -118,7 +118,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:text="Unlock premium features and help fund new smartglasses support."
-                    android:textColor="@color/text_secondary"
+                    android:textColor="@color/titan_secondary_label"
                     android:textSize="12sp" />
             </LinearLayout>
 
@@ -127,7 +127,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="OPEN"
-                android:textColor="@color/cyan_accent"
+                android:textColor="@color/titan_primary"
                 android:textStyle="bold"
                 android:textSize="12sp"
                 android:letterSpacing="0.06" />
@@ -156,7 +156,7 @@
                 android:id="@+id/card_agent_provider"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/card_bg"
+                app:cardBackgroundColor="@color/titan_card_background"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp">
 
@@ -180,7 +180,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="AI / AUTOMATION"
-                            android:textColor="@color/cyan_accent"
+                            android:textColor="@color/titan_primary"
                             android:textStyle="bold"
                             android:textSize="12sp"
                             android:letterSpacing="0.1" />
@@ -190,7 +190,7 @@
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:src="@drawable/ic_expand_more"
-                            android:tint="@color/text_secondary"
+                            android:tint="@color/titan_secondary_label"
                             android:contentDescription="Expand/collapse" />
                     </LinearLayout>
 
@@ -206,7 +206,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Provider Type"
-                            android:textColor="@color/text_primary"
+                            android:textColor="@color/titan_primary_label"
                             android:textStyle="bold" />
 
                         <RadioGroup
@@ -220,21 +220,21 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Tasker (AutoInput)"
-                                android:textColor="@color/text_primary" />
+                                android:textColor="@color/titan_primary_label" />
 
                             <com.google.android.material.radiobutton.MaterialRadioButton
                                 android:id="@+id/rb_provider_local_agent"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Local Models (on-device llama.cpp)"
-                                android:textColor="@color/text_primary" />
+                                android:textColor="@color/titan_primary_label" />
 
                             <com.google.android.material.radiobutton.MaterialRadioButton
                                 android:id="@+id/rb_provider_pro_subscription"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Pro Subscription"
-                                android:textColor="@color/text_primary" />
+                                android:textColor="@color/titan_primary_label" />
                         </RadioGroup>
 
                         <LinearLayout
@@ -249,7 +249,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Configure Local Models"
-                                android:textColor="@color/cyan_accent"
+                                android:textColor="@color/titan_primary"
                                 android:textSize="12sp" />
                         </LinearLayout>
 
@@ -257,7 +257,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Local Models run fully on-device with GGUF files. Tasker mode uses your Tasker/AutoInput profile."
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/titan_secondary_label"
                             android:textSize="12sp" />
 
                     </LinearLayout>
@@ -270,7 +270,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                app:cardBackgroundColor="@color/card_bg"
+                app:cardBackgroundColor="@color/titan_card_background"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp">
 
@@ -294,7 +294,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="LOCAL AGENT"
-                            android:textColor="@color/cyan_accent"
+                            android:textColor="@color/titan_primary"
                             android:textStyle="bold"
                             android:textSize="12sp"
                             android:letterSpacing="0.1" />
@@ -304,7 +304,7 @@
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:src="@drawable/ic_expand_more"
-                            android:tint="@color/text_secondary"
+                            android:tint="@color/titan_secondary_label"
                             android:contentDescription="Expand/collapse" />
                     </LinearLayout>
 
@@ -321,7 +321,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="SCREEN CAPTURE (Windows Recall-like)"
-                            android:textColor="@color/cyan_accent"
+                            android:textColor="@color/titan_primary"
                             android:textStyle="bold"
                             android:textSize="11sp"
                             android:letterSpacing="0.1" />
@@ -332,13 +332,13 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:text="Store screen content automatically"
-                            android:textColor="@color/text_primary" />
+                            android:textColor="@color/titan_primary_label" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Automatically captures text from your screen for AI memory. Use blacklist for sensitive apps (banking, password managers)."
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/titan_secondary_label"
                             android:textSize="11sp" />
 
                         <com.google.android.material.textfield.TextInputLayout
@@ -361,7 +361,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Blacklist apps for capture"
-                            android:textColor="@color/cyan_accent"
+                            android:textColor="@color/titan_primary"
                             android:textSize="12sp"
                             android:minHeight="0dp"
                             android:paddingTop="4dp"
@@ -373,7 +373,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="View today's screen captures"
-                            android:textColor="@color/cyan_accent"
+                            android:textColor="@color/titan_primary"
                             android:textSize="12sp"
                             android:minHeight="0dp"
                             android:paddingTop="4dp"
@@ -383,7 +383,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
                             android:layout_marginTop="12dp"
-                            android:background="#2A2A2A" />
+                            android:background="@color/titan_divider" />
 
                         <!-- Mini Section: Daily Facts -->
                         <TextView
@@ -391,7 +391,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:text="DAILY FACTS &amp; DIARY"
-                            android:textColor="@color/cyan_accent"
+                            android:textColor="@color/titan_primary"
                             android:textStyle="bold"
                             android:textSize="11sp"
                             android:letterSpacing="0.1" />
@@ -402,13 +402,13 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:text="Daily notification to verify facts"
-                            android:textColor="@color/text_primary" />
+                            android:textColor="@color/titan_primary_label" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Get a daily notification to review and confirm facts about your day for AI memory."
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/titan_secondary_label"
                             android:textSize="11sp" />
 
                         <LinearLayout
@@ -424,7 +424,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="Edit facts"
-                                android:textColor="@color/cyan_accent"
+                                android:textColor="@color/titan_primary"
                                 android:textSize="11sp"
                                 android:minHeight="0dp"
                                 android:paddingTop="4dp"
@@ -437,7 +437,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="Confirmed"
-                                android:textColor="@color/cyan_accent"
+                                android:textColor="@color/titan_primary"
                                 android:textSize="11sp"
                                 android:minHeight="0dp"
                                 android:paddingTop="4dp"
@@ -450,7 +450,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="View daily summary/diary"
-                            android:textColor="@color/cyan_accent"
+                            android:textColor="@color/titan_primary"
                             android:textSize="12sp"
                             android:minHeight="0dp"
                             android:paddingTop="4dp"
@@ -474,7 +474,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="If enough time has passed, regeneration is queued in background and won't block chat replies."
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/titan_secondary_label"
                             android:textSize="11sp" />
         <!-- Mini Section: Custom Bullet Prompts -->
         <TextView
@@ -482,7 +482,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:text="CUSTOM BULLET PROMPTS"
-            android:textColor="@color/cyan_accent"
+            android:textColor="@color/titan_primary"
             android:textStyle="bold"
             android:textSize="11sp"
             android:letterSpacing="0.1" />
@@ -492,7 +492,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:text="Customize prompts used by local models to generate daily fact bullets from screen captures."
-            android:textColor="@color/text_secondary"
+            android:textColor="@color/titan_secondary_label"
             android:textSize="11sp" />
 
         <com.google.android.material.button.MaterialButton
@@ -501,7 +501,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Edit bullet generation prompt"
-            android:textColor="@color/cyan_accent"
+            android:textColor="@color/titan_primary"
             android:textSize="12sp"
             android:minHeight="0dp"
             android:paddingTop="4dp"
@@ -513,7 +513,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Reset to default"
-            android:textColor="@color/text_secondary"
+            android:textColor="@color/titan_secondary_label"
             android:textSize="11sp"
             android:minHeight="0dp"
             android:paddingTop="2dp"
@@ -530,7 +530,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Max tokens per bullet:"
-                        android:textColor="@color/text_primary"
+                        android:textColor="@color/titan_primary_label"
                         android:textSize="12sp" />
 
                     <EditText
@@ -548,7 +548,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="4dp"
                         android:text="(0 = auto)"
-                        android:textColor="@color/text_secondary"
+                        android:textColor="@color/titan_secondary_label"
                         android:textSize="11sp" />
 
                 </LinearLayout>
@@ -557,7 +557,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="12dp"
-            android:background="#2A2A2A" />
+            android:background="@color/titan_divider" />
 
 
                         <com.google.android.material.switchmaterial.SwitchMaterial
@@ -566,7 +566,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:text="Auto-save daily facts from chats"
-                            android:textColor="@color/text_primary" />
+                            android:textColor="@color/titan_primary_label" />
 
                         <com.google.android.material.switchmaterial.SwitchMaterial
                             android:id="@+id/switch_local_agent_extract_user_fact_candidates"
@@ -574,13 +574,13 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:text="Extract user fact candidates from chats"
-                            android:textColor="@color/text_primary" />
+                            android:textColor="@color/titan_primary_label" />
 
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
                             android:layout_marginTop="12dp"
-                            android:background="#2A2A2A" />
+                            android:background="@color/titan_divider" />
 
                         <!-- Mini Section: Agent Personality -->
                         <TextView
@@ -588,7 +588,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:text="AGENT PERSONALITY"
-                            android:textColor="@color/cyan_accent"
+                            android:textColor="@color/titan_primary"
                             android:textStyle="bold"
                             android:textSize="11sp"
                             android:letterSpacing="0.1" />
@@ -598,7 +598,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:text="Personalize how the AI agent behaves and what it knows about you."
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/titan_secondary_label"
                             android:textSize="11sp" />
 
                         <com.google.android.material.button.MaterialButton
@@ -607,7 +607,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Edit agent personality"
-                            android:textColor="@color/cyan_accent"
+                            android:textColor="@color/titan_primary"
                             android:textSize="12sp"
                             android:minHeight="0dp"
                             android:paddingTop="4dp"
@@ -619,7 +619,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Edit user facts"
-                            android:textColor="@color/cyan_accent"
+                            android:textColor="@color/titan_primary"
                             android:textSize="12sp"
                             android:minHeight="0dp"
                             android:paddingTop="4dp"
@@ -629,7 +629,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
                             android:layout_marginTop="12dp"
-                            android:background="#2A2A2A" />
+                            android:background="@color/titan_divider" />
 
                         <!-- Mini Section: Audio Capture -->
                         <TextView
@@ -637,7 +637,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:text="AUDIO CAPTURE"
-                            android:textColor="@color/cyan_accent"
+                            android:textColor="@color/titan_primary"
                             android:textStyle="bold"
                             android:textSize="11sp"
                             android:letterSpacing="0.1" />
@@ -648,7 +648,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:text="Auto-record glasses audio (15 min chunks)"
-                            android:textColor="@color/text_primary" />
+                            android:textColor="@color/titan_primary_label" />
 
                         <com.google.android.material.switchmaterial.SwitchMaterial
                             android:id="@+id/switch_auto_audio_visual_notes"
@@ -656,7 +656,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:text="Auto visual notes (Gemma scene description)"
-                            android:textColor="@color/text_primary" />
+                            android:textColor="@color/titan_primary_label" />
 
                         <com.google.android.material.switchmaterial.SwitchMaterial
                             android:id="@+id/switch_auto_audio_speech_extend"
@@ -664,7 +664,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:text="@string/auto_audio_speech_extend"
-                            android:textColor="@color/text_primary" />
+                            android:textColor="@color/titan_primary_label" />
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/til_auto_audio_loops_before_sync"
@@ -687,21 +687,21 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:text=""
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/titan_secondary_label"
                             android:textSize="11sp" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="When ON, the app will start audio recording on the glasses, stop after 15 minutes, then start a new recording repeatedly."
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/titan_secondary_label"
                             android:textSize="11sp" />
 
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
                             android:layout_marginTop="12dp"
-                            android:background="#2A2A2A" />
+                            android:background="@color/titan_divider" />
 
                         <!-- Mini Section: Debug -->
                         <com.google.android.material.button.MaterialButton
@@ -711,7 +711,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:text="View last injected context (debug)"
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/titan_secondary_label"
                             android:textSize="11sp"
                             android:minHeight="0dp"
                             android:paddingTop="4dp"
@@ -721,7 +721,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
                             android:layout_marginTop="12dp"
-                            android:background="#2A2A2A" />
+                            android:background="@color/titan_divider" />
 
                         <!-- Mini Section: Runtime (EXPERIMENTAL) -->
                         <TextView
@@ -752,7 +752,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Accessibility: "
-                                android:textColor="@color/text_secondary"
+                                android:textColor="@color/titan_secondary_label"
                                 android:textSize="12sp" />
 
                             <TextView
@@ -760,7 +760,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Unknown"
-                                android:textColor="@color/text_primary"
+                                android:textColor="@color/titan_primary_label"
                                 android:textSize="12sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
@@ -771,7 +771,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Open accessibility settings"
-                            android:textColor="@color/cyan_accent"
+                            android:textColor="@color/titan_primary"
                             android:textSize="12sp"
                             android:minHeight="0dp"
                             android:paddingTop="4dp"
@@ -783,7 +783,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:text="Require confirmation before actions"
-                            android:textColor="@color/text_primary" />
+                            android:textColor="@color/titan_primary_label" />
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/til_local_agent_max_steps"
@@ -803,7 +803,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Limits how many UI actions the agent can perform per request."
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/titan_secondary_label"
                             android:textSize="11sp" />
 
                         <TextView
@@ -812,7 +812,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:text="Status: Unknown"
-                            android:textColor="@color/text_primary"
+                            android:textColor="@color/titan_primary_label"
                             android:textSize="13sp" />
 
                         <TextView
@@ -821,7 +821,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:text="Last error: (none)"
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/titan_secondary_label"
                             android:textSize="11sp" />
 
                         <LinearLayout
@@ -848,7 +848,7 @@
                                 android:text="Stop"
                                 android:textSize="12sp"
                                 app:backgroundTint="@color/danger"
-                                android:textColor="@color/bg_dark" />
+                                android:textColor="@color/titan_button_text" />
 
                             <com.google.android.material.button.MaterialButton
                                 android:id="@+id/btn_agent_demo"
@@ -867,7 +867,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:text="Require action confirmation"
-                            android:textColor="@color/text_primary" />
+                            android:textColor="@color/titan_primary_label" />
 
                         <com.google.android.material.switchmaterial.SwitchMaterial
                             android:id="@+id/switch_auto_execute_low_risk"
@@ -875,7 +875,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:text="Auto-execute low-risk actions"
-                            android:textColor="@color/text_primary" />
+                            android:textColor="@color/titan_primary_label" />
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/btn_view_pending_actions"
@@ -883,7 +883,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="View pending actions"
-                            android:textColor="@color/cyan_accent"
+                            android:textColor="@color/titan_primary"
                             android:textSize="12sp"
                             android:minHeight="0dp"
                             android:paddingTop="4dp"
@@ -899,7 +899,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                app:cardBackgroundColor="@color/card_bg"
+                app:cardBackgroundColor="@color/titan_card_background"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp">
 
@@ -922,7 +922,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="MEMORY PRIVACY"
-                            android:textColor="@color/cyan_accent"
+                            android:textColor="@color/titan_primary"
                             android:textStyle="bold"
                             android:textSize="12sp"
                             android:letterSpacing="0.1" />
@@ -932,7 +932,7 @@
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:src="@drawable/ic_expand_more"
-                            android:tint="@color/text_secondary"
+                            android:tint="@color/titan_secondary_label"
                             android:contentDescription="Expand/collapse" />
                     </LinearLayout>
 
@@ -948,7 +948,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Current mode: Private Local"
-                            android:textColor="@color/text_primary"
+                            android:textColor="@color/titan_primary_label"
                             android:textStyle="bold" />
 
                         <RadioGroup
@@ -962,28 +962,28 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Private Local"
-                                android:textColor="@color/text_primary" />
+                                android:textColor="@color/titan_primary_label" />
 
                             <com.google.android.material.radiobutton.MaterialRadioButton
                                 android:id="@+id/rb_memory_mode_encrypted_sync"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Encrypted Sync (future-ready)"
-                                android:textColor="@color/text_primary" />
+                                android:textColor="@color/titan_primary_label" />
 
                             <com.google.android.material.radiobutton.MaterialRadioButton
                                 android:id="@+id/rb_memory_mode_fast_cloud"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Fast Cloud Memory (coming later)"
-                                android:textColor="@color/text_primary" />
+                                android:textColor="@color/titan_primary_label" />
 
                             <com.google.android.material.radiobutton.MaterialRadioButton
                                 android:id="@+id/rb_memory_mode_confidential_cloud"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Confidential Cloud Beta (coming later)"
-                                android:textColor="@color/text_primary" />
+                                android:textColor="@color/titan_primary_label" />
                         </RadioGroup>
 
                         <TextView
@@ -992,7 +992,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:text="Mode status"
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/titan_secondary_label"
                             android:textSize="12sp" />
 
                         <TextView
@@ -1000,7 +1000,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:text="PER-CATEGORY SYNC ELIGIBILITY"
-                            android:textColor="@color/cyan_accent"
+                            android:textColor="@color/titan_primary"
                             android:textStyle="bold"
                             android:textSize="12sp"
                             android:letterSpacing="0.1" />
@@ -1011,28 +1011,28 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:text="Explicit user facts sync-eligible"
-                            android:textColor="@color/text_primary" />
+                            android:textColor="@color/titan_primary_label" />
 
                         <com.google.android.material.switchmaterial.SwitchMaterial
                             android:id="@+id/switch_memory_sync_daily"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Daily facts sync-eligible"
-                            android:textColor="@color/text_primary" />
+                            android:textColor="@color/titan_primary_label" />
 
                         <com.google.android.material.switchmaterial.SwitchMaterial
                             android:id="@+id/switch_memory_sync_ocr"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Screen OCR sync-eligible (off by default)"
-                            android:textColor="@color/text_primary" />
+                            android:textColor="@color/titan_primary_label" />
 
                         <com.google.android.material.switchmaterial.SwitchMaterial
                             android:id="@+id/switch_memory_sync_derived"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Derived summaries sync-eligible"
-                            android:textColor="@color/text_primary" />
+                            android:textColor="@color/titan_primary_label" />
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/til_memory_ocr_retention_days"
@@ -1059,7 +1059,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:text="VAULT LOCK"
-                            android:textColor="@color/cyan_accent"
+                            android:textColor="@color/titan_primary"
                             android:textStyle="bold"
                             android:textSize="12sp"
                             android:letterSpacing="0.1" />
@@ -1069,7 +1069,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Vault state"
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/titan_secondary_label"
                             android:textSize="12sp" />
 
                         <LinearLayout
@@ -1126,7 +1126,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:text="Encrypted sync status"
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/titan_secondary_label"
                             android:textSize="12sp" />
 
                         <TextView
@@ -1135,7 +1135,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:text="Cloud status"
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/titan_secondary_label"
                             android:textSize="12sp" />
 
                         <com.google.android.material.button.MaterialButton
@@ -1145,7 +1145,7 @@
                             android:layout_marginTop="12dp"
                             android:text="Reset memory vault"
                             app:backgroundTint="@color/danger"
-                            android:textColor="@color/bg_dark" />
+                            android:textColor="@color/titan_button_text" />
 
                     </LinearLayout>
                 </LinearLayout>
@@ -1157,7 +1157,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                app:cardBackgroundColor="@color/card_bg"
+                app:cardBackgroundColor="@color/titan_card_background"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp">
 
@@ -1181,7 +1181,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="TRANSCRIPTS"
-                            android:textColor="@color/cyan_accent"
+                            android:textColor="@color/titan_primary"
                             android:textStyle="bold"
                             android:textSize="12sp"
                             android:letterSpacing="0.1" />
@@ -1191,7 +1191,7 @@
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:src="@drawable/ic_expand_more"
-                            android:tint="@color/text_secondary"
+                            android:tint="@color/titan_secondary_label"
                             android:contentDescription="Expand/collapse" />
                     </LinearLayout>
 
@@ -1208,13 +1208,13 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Store full transcript locally"
-                            android:textColor="@color/text_primary" />
+                            android:textColor="@color/titan_primary_label" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="When OFF, the app should store only summaries + minimal metadata."
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/titan_secondary_label"
                             android:textSize="12sp" />
 
                         <com.google.android.material.switchmaterial.SwitchMaterial
@@ -1223,20 +1223,20 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
                             android:text="Include full transcription in exports"
-                            android:textColor="@color/text_primary" />
+                            android:textColor="@color/titan_primary_label" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="When OFF, exports should omit full transcript (best-effort)."
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/titan_secondary_label"
                             android:textSize="12sp" />
 
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
                             android:layout_marginTop="12dp"
-                            android:background="#2A2A2A" />
+                            android:background="@color/titan_divider" />
 
                         <!-- Mini Section: Redaction -->
                         <TextView
@@ -1244,7 +1244,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:text="REDACTION"
-                            android:textColor="@color/cyan_accent"
+                            android:textColor="@color/titan_primary"
                             android:textStyle="bold"
                             android:textSize="11sp"
                             android:letterSpacing="0.1" />
@@ -1255,13 +1255,13 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:text="Redact names (best-effort)"
-                            android:textColor="@color/text_primary" />
+                            android:textColor="@color/titan_primary_label" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Uses simple heuristics (capitalized names, emails, phone numbers)."
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/titan_secondary_label"
                             android:textSize="11sp" />
 
                     </LinearLayout>
@@ -1274,7 +1274,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                app:cardBackgroundColor="@color/card_bg"
+                app:cardBackgroundColor="@color/titan_card_background"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp">
 
@@ -1297,7 +1297,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="DATA"
-                            android:textColor="@color/cyan_accent"
+                            android:textColor="@color/titan_primary"
                             android:textStyle="bold"
                             android:textSize="12sp"
                             android:letterSpacing="0.1" />
@@ -1307,7 +1307,7 @@
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:src="@drawable/ic_expand_more"
-                            android:tint="@color/text_secondary"
+                            android:tint="@color/titan_secondary_label"
                             android:contentDescription="Expand/collapse" />
                     </LinearLayout>
 
@@ -1322,7 +1322,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Delete all local chats, notes, capture sessions, and recordings on this device."
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/titan_secondary_label"
                             android:textSize="12sp" />
 
                         <LinearLayout
@@ -1338,7 +1338,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="Export data"
-                                android:textColor="@color/text_primary" />
+                                android:textColor="@color/titan_primary_label" />
 
                             <com.google.android.material.button.MaterialButton
                                 android:id="@+id/btn_import_local_data"
@@ -1348,7 +1348,7 @@
                                 android:layout_marginStart="8dp"
                                 android:layout_weight="1"
                                 android:text="Import data"
-                                android:textColor="@color/text_primary" />
+                                android:textColor="@color/titan_primary_label" />
                         </LinearLayout>
 
                         <com.google.android.material.button.MaterialButton
@@ -1358,7 +1358,7 @@
                             android:layout_marginTop="12dp"
                             android:text="Clear local data"
                             app:backgroundTint="@color/danger"
-                            android:textColor="@color/bg_dark" />
+                            android:textColor="@color/titan_button_text" />
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/btn_send_debug_logs"
@@ -1367,8 +1367,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:text="Send debug logs"
-                            android:textColor="@color/cyan_accent"
-                            app:strokeColor="@color/cyan_accent" />
+                            android:textColor="@color/titan_primary"
+                            app:strokeColor="@color/titan_primary" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -1380,7 +1380,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                app:cardBackgroundColor="@color/card_bg"
+                app:cardBackgroundColor="@color/titan_card_background"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp">
 
@@ -1404,7 +1404,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="AGENT (API)"
-                            android:textColor="@color/cyan_accent"
+                            android:textColor="@color/titan_primary"
                             android:textStyle="bold"
                             android:textSize="12sp"
                             android:letterSpacing="0.1" />
@@ -1414,7 +1414,7 @@
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:src="@drawable/ic_expand_more"
-                            android:tint="@color/text_secondary"
+                            android:tint="@color/titan_secondary_label"
                             android:contentDescription="Expand/collapse" />
                     </LinearLayout>
 
@@ -1430,7 +1430,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Agent runtime controls have been moved to the LOCAL AGENT section above for better organization."
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/titan_secondary_label"
                             android:textSize="12sp" />
 
                         <TextView
@@ -1438,7 +1438,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:text="This section provides the LocalAgentService intent API for external integrations."
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/titan_secondary_label"
                             android:textSize="11sp" />
 
                     </LinearLayout>
@@ -1451,7 +1451,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                app:cardBackgroundColor="@color/card_bg"
+                app:cardBackgroundColor="@color/titan_card_background"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp">
 
@@ -1474,7 +1474,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="FAQ"
-                            android:textColor="@color/cyan_accent"
+                            android:textColor="@color/titan_primary"
                             android:textStyle="bold"
                             android:textSize="12sp"
                             android:letterSpacing="0.1" />
@@ -1484,7 +1484,7 @@
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:src="@drawable/ic_expand_more"
-                            android:tint="@color/text_secondary"
+                            android:tint="@color/titan_secondary_label"
                             android:contentDescription="Expand/collapse" />
                     </LinearLayout>
 
@@ -1500,7 +1500,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="0dp"
                             android:text="How do I set Local Models?"
-                            android:textColor="@color/text_primary"
+                            android:textColor="@color/titan_primary_label"
                             android:textStyle="bold" />
 
                         <TextView
@@ -1508,7 +1508,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:text="Select Local Models in AI / Automation, then tap Configure Local Models and follow the setup steps on device."
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/titan_secondary_label"
                             android:textSize="12sp" />
 
                         <TextView
@@ -1516,7 +1516,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:text="Do I need a subscription to use the app?"
-                            android:textColor="@color/text_primary"
+                            android:textColor="@color/titan_primary_label"
                             android:textStyle="bold" />
 
                         <TextView
@@ -1524,7 +1524,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:text="No. You can use Tasker or Local Models without subscribing. Pro is optional and adds premium managed features."
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/titan_secondary_label"
                             android:textSize="12sp" />
 
                         <TextView
@@ -1532,7 +1532,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:text="How is my data handled?"
-                            android:textColor="@color/text_primary"
+                            android:textColor="@color/titan_primary_label"
                             android:textStyle="bold" />
 
                         <TextView
@@ -1540,7 +1540,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:text="By default data is stored locally on your phone. You can export/import your local data and clear it any time from the Data section."
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/titan_secondary_label"
                             android:textSize="12sp" />
 
                         <TextView
@@ -1548,7 +1548,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:text="Can I review the source code?"
-                            android:textColor="@color/text_primary"
+                            android:textColor="@color/titan_primary_label"
                             android:textStyle="bold" />
 
                         <TextView
@@ -1556,7 +1556,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:text="Yes. The app is open source and you can manually review the full source code on GitHub."
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/titan_secondary_label"
                             android:textSize="12sp" />
                     </LinearLayout>
                 </LinearLayout>
@@ -1569,7 +1569,7 @@
         android:id="@+id/bottom_navigation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/card_bg"
+        android:background="@color/titan_card_background"
         app:itemIconTint="@color/bottom_nav_item"
         app:itemTextColor="@color/bottom_nav_item"
         app:menu="@menu/bottom_nav_menu"

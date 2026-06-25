@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_dark"
+    android:background="@color/titan_app_background"
     android:padding="16dp"
     android:fitsSystemWindows="true">
 
@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Recording active"
-                android:textColor="@color/bg_dark"
+                android:textColor="@color/titan_button_text"
                 android:textStyle="bold" />
 
             <Button
@@ -42,7 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Stop"
-                android:backgroundTint="@color/bg_dark"
+                android:backgroundTint="@color/titan_app_background"
                 android:textColor="@color/danger" />
         </LinearLayout>
 
@@ -53,7 +53,7 @@
         android:id="@+id/card_status"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/card_bg"
+        app:cardBackgroundColor="@color/titan_card_background"
         app:cardCornerRadius="12dp"
         app:cardElevation="4dp"
         app:layout_constraintTop_toBottomOf="@id/meeting_recording_banner"
@@ -77,7 +77,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="GLASSES STATUS"
-                    android:textColor="@color/cyan_accent"
+                    android:textColor="@color/titan_primary"
                     android:textStyle="bold"
                     android:textSize="12sp"
                     android:letterSpacing="0.1"/>
@@ -107,7 +107,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Disconnected"
-                        android:textColor="@color/text_secondary"
+                        android:textColor="@color/titan_secondary_label"
                         android:textSize="18sp"/>
 
                     <TextView
@@ -115,7 +115,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Class: Unknown"
-                        android:textColor="@color/text_secondary"
+                        android:textColor="@color/titan_secondary_label"
                         android:textSize="14sp"
                         android:layout_marginTop="4dp"/>
 
@@ -139,7 +139,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Battery: "
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/titan_secondary_label"
                             android:textSize="12sp" />
 
                         <TextView
@@ -147,7 +147,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="--%"
-                            android:textColor="@color/text_primary"
+                            android:textColor="@color/titan_primary_label"
                             android:textSize="18sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -163,7 +163,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Storage: "
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/titan_secondary_label"
                             android:textSize="12sp" />
 
                         <TextView
@@ -171,7 +171,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="--"
-                            android:textColor="@color/text_primary"
+                            android:textColor="@color/titan_primary_label"
                             android:textSize="12sp"/>
                     </LinearLayout>
 
@@ -188,7 +188,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:visibility="gone"
-        app:cardBackgroundColor="@color/card_bg"
+        app:cardBackgroundColor="@color/titan_card_background"
         app:cardCornerRadius="12dp"
         app:cardElevation="4dp"
         app:layout_constraintTop_toBottomOf="@id/card_status"
@@ -206,7 +206,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="SYNC PROGRESS"
-                android:textColor="@color/text_secondary"
+                android:textColor="@color/titan_secondary_label"
                 android:textSize="12sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.1" />
@@ -217,7 +217,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:text="Photos: --  Videos: --  Audio: --"
-                android:textColor="@color/text_primary"
+                android:textColor="@color/titan_primary_label"
                 android:textSize="13sp" />
 
             <ProgressBar
@@ -242,7 +242,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Idle"
-                    android:textColor="@color/text_secondary"
+                    android:textColor="@color/titan_secondary_label"
                     android:textSize="12sp" />
 
                 <Button
@@ -251,7 +251,7 @@
                     android:layout_height="wrap_content"
                     android:text="Stop sync"
                     android:textAllCaps="false"
-                    android:backgroundTint="@color/card_bg"
+                    android:backgroundTint="@color/titan_secondary_button_tint"
                     android:textColor="@color/danger"
                     android:paddingLeft="12dp"
                     android:paddingRight="12dp" />
@@ -284,7 +284,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="CONNECTION"
-                android:textColor="@color/text_secondary"
+                android:textColor="@color/titan_secondary_label"
                 android:textSize="12sp"
                 android:layout_marginBottom="8dp"/>
 
@@ -299,8 +299,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Scan"
-                    android:backgroundTint="@color/cyan_accent"
-                    android:textColor="@color/bg_dark"/>
+                    android:backgroundTint="@color/titan_primary_button_tint"
+                    android:textColor="@color/titan_button_text"/>
 
                 <Space android:layout_width="8dp" android:layout_height="wrap_content"/>
 
@@ -310,8 +310,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Reconnect"
-                    android:backgroundTint="@color/card_bg"
-                    android:textColor="@color/cyan_accent"/>
+                    android:backgroundTint="@color/titan_secondary_button_tint"
+                    android:textColor="@color/titan_primary"/>
             </LinearLayout>
 
             <Button
@@ -319,7 +319,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Disconnect"
-                android:backgroundTint="@color/card_bg"
+                android:backgroundTint="@color/titan_secondary_button_tint"
                 android:textColor="@color/danger"/>
 
             <!-- SECTION: MEETING CAPTURE -->
@@ -327,7 +327,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="MEETING CAPTURE"
-                android:textColor="@color/cyan_accent"
+                android:textColor="@color/titan_primary"
                 android:textStyle="bold"
                 android:textSize="12sp"
                 android:layout_marginTop="16dp"
@@ -344,8 +344,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Start"
-                    android:backgroundTint="@color/cyan_accent"
-                    android:textColor="@color/bg_dark" />
+                    android:backgroundTint="@color/titan_primary_button_tint"
+                    android:textColor="@color/titan_button_text" />
 
                 <Space
                     android:layout_width="8dp"
@@ -357,7 +357,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Stop"
-                    android:backgroundTint="@color/card_bg"
+                    android:backgroundTint="@color/titan_secondary_button_tint"
                     android:textColor="@color/danger" />
             </LinearLayout>
 
@@ -371,7 +371,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Timer:"
-                    android:textColor="@color/text_secondary"
+                    android:textColor="@color/titan_secondary_label"
                     android:layout_gravity="center_vertical" />
 
                 <Spinner
@@ -387,7 +387,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Source: (not recording)"
-                android:textColor="@color/text_secondary"
+                android:textColor="@color/titan_secondary_label"
                 android:textSize="12sp"
                 android:layout_marginTop="4dp" />
 
@@ -408,7 +408,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="AI ASSISTANT"
-                    android:textColor="@color/cyan_accent"
+                    android:textColor="@color/titan_primary"
                     android:textStyle="bold"
                     android:textSize="12sp"
                     android:layout_marginTop="16dp"
@@ -425,10 +425,10 @@
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:text="Enable Hijack"
-                        android:textColor="@color/text_primary"
+                        android:textColor="@color/titan_primary_label"
                         android:checked="true"
                         android:visibility="gone"
-                        android:buttonTint="@color/cyan_accent"/>
+                        android:buttonTint="@color/titan_primary"/>
 
                     <CheckBox
                         android:id="@+id/cb_image_as_assistant"
@@ -436,11 +436,21 @@
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:text="Direct Assistant"
-                        android:textColor="@color/text_primary"
+                        android:textColor="@color/titan_primary_label"
                         android:checked="true"
                         android:visibility="gone"
-                        android:buttonTint="@color/cyan_accent"/>
+                        android:buttonTint="@color/titan_primary"/>
                 </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_take_photo_and_download"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Take Photo and Download"
+                    android:textAllCaps="false"
+                    android:backgroundTint="@color/titan_primary_button_tint"
+                    android:textColor="@color/titan_button_text"
+                    android:layout_marginTop="8dp"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -453,8 +463,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Gemini"
-                        android:backgroundTint="@color/card_bg"
-                        android:textColor="@color/cyan_accent"/>
+                        android:backgroundTint="@color/titan_secondary_button_tint"
+                        android:textColor="@color/titan_primary"/>
 
                     <Space android:layout_width="8dp" android:layout_height="wrap_content"/>
 
@@ -464,8 +474,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="ChatGPT"
-                        android:backgroundTint="@color/card_bg"
-                        android:textColor="@color/text_secondary"/>
+                        android:backgroundTint="@color/titan_secondary_button_tint"
+                        android:textColor="@color/titan_secondary_label"/>
 
                     <Space android:layout_width="8dp" android:layout_height="wrap_content"/>
 
@@ -475,8 +485,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Local/Pro/Tasker"
-                        android:backgroundTint="@color/card_bg"
-                        android:textColor="@color/text_secondary"/>
+                        android:backgroundTint="@color/titan_secondary_button_tint"
+                        android:textColor="@color/titan_secondary_label"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -491,8 +501,8 @@
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:text="Test AI Voice Question"
-                        android:backgroundTint="@color/card_bg"
-                        android:textColor="@color/cyan_accent"
+                        android:backgroundTint="@color/titan_secondary_button_tint"
+                        android:textColor="@color/titan_primary"
                         style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
                     <Space android:layout_width="8dp" android:layout_height="wrap_content"/>
@@ -503,8 +513,8 @@
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:text="Test Image AI description"
-                        android:backgroundTint="@color/card_bg"
-                        android:textColor="@color/cyan_accent"
+                        android:backgroundTint="@color/titan_secondary_button_tint"
+                        android:textColor="@color/titan_primary"
                         style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
                 </LinearLayout>
 
@@ -513,7 +523,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="MEDIA CONTROLS"
-                    android:textColor="@color/text_secondary"
+                    android:textColor="@color/titan_secondary_label"
                     android:textSize="12sp"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="8dp"/>
@@ -529,8 +539,8 @@
                         android:layout_weight="1"
                         android:layout_height="60dp"
                         android:text="Photo"
-                        android:backgroundTint="@color/card_bg"
-                        android:textColor="@color/purple_200"/>
+                        android:backgroundTint="@color/titan_secondary_button_tint"
+                        android:textColor="@color/titan_primary"/>
 
                     <Space android:layout_width="8dp" android:layout_height="wrap_content"/>
 
@@ -540,8 +550,8 @@
                         android:layout_weight="1"
                         android:layout_height="60dp"
                         android:text="Video"
-                        android:backgroundTint="@color/card_bg"
-                        android:textColor="@color/purple_200"/>
+                        android:backgroundTint="@color/titan_secondary_button_tint"
+                        android:textColor="@color/titan_primary"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -556,8 +566,8 @@
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:text="Audio"
-                        android:backgroundTint="@color/card_bg"
-                        android:textColor="@color/purple_200"/>
+                        android:backgroundTint="@color/titan_secondary_button_tint"
+                        android:textColor="@color/titan_primary"/>
 
                     <Space android:layout_width="8dp" android:layout_height="wrap_content"/>
 
@@ -567,8 +577,8 @@
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:text="Count"
-                        android:backgroundTint="@color/card_bg"
-                        android:textColor="@color/purple_200"/>
+                        android:backgroundTint="@color/titan_secondary_button_tint"
+                        android:textColor="@color/titan_primary"/>
                 </LinearLayout>
 
                 <Button
@@ -576,8 +586,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Sync Data (P2P)"
-                    android:backgroundTint="@color/card_bg"
-                    android:textColor="@color/purple_200"
+                    android:backgroundTint="@color/titan_secondary_button_tint"
+                    android:textColor="@color/titan_primary"
                     android:layout_marginTop="8dp"/>
 
                 <Button
@@ -586,8 +596,8 @@
                     android:layout_height="wrap_content"
                     android:text="Official Enable WiFi"
                     android:textAllCaps="false"
-                    android:backgroundTint="@color/card_bg"
-                    android:textColor="@color/cyan_accent"
+                    android:backgroundTint="@color/titan_secondary_button_tint"
+                    android:textColor="@color/titan_primary"
                     android:layout_marginTop="8dp"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
@@ -605,8 +615,8 @@
                         android:layout_weight="1"
                         android:text="Copy Logs"
                         android:textAllCaps="false"
-                        android:backgroundTint="@color/card_bg"
-                        android:textColor="@color/cyan_accent"
+                        android:backgroundTint="@color/titan_secondary_button_tint"
+                        android:textColor="@color/titan_primary"
                         style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
                     <Space
@@ -620,8 +630,8 @@
                         android:layout_weight="1"
                         android:text="Share Logs"
                         android:textAllCaps="false"
-                        android:backgroundTint="@color/card_bg"
-                        android:textColor="@color/cyan_accent"
+                        android:backgroundTint="@color/titan_secondary_button_tint"
+                        android:textColor="@color/titan_primary"
                         style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
                     <Space
@@ -635,7 +645,7 @@
                         android:layout_weight="1"
                         android:text="Clear"
                         android:textAllCaps="false"
-                        android:backgroundTint="@color/card_bg"
+                        android:backgroundTint="@color/titan_secondary_button_tint"
                         android:textColor="@color/danger"
                         style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
                 </LinearLayout>
@@ -646,8 +656,8 @@
                     android:layout_height="wrap_content"
                     android:text="Copy Technical Sync Log"
                     android:textAllCaps="false"
-                    android:backgroundTint="@color/card_bg"
-                    android:textColor="@color/cyan_accent"
+                    android:backgroundTint="@color/titan_secondary_button_tint"
+                    android:textColor="@color/titan_primary"
                     android:layout_marginTop="8dp"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
@@ -658,7 +668,7 @@
                     android:layout_height="wrap_content"
                     android:text="Advanced ▼"
                     android:backgroundTint="@android:color/transparent"
-                    android:textColor="@color/text_secondary"
+                    android:textColor="@color/titan_secondary_label"
                     android:layout_marginTop="16dp"
                     style="@style/Widget.MaterialComponents.Button.TextButton" />
 
@@ -675,7 +685,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="LOCAL AGENT"
-                    android:textColor="@color/text_secondary"
+                    android:textColor="@color/titan_secondary_label"
                     android:textSize="12sp"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="8dp"/>
@@ -685,7 +695,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Status: Unknown"
-                    android:textColor="@color/text_primary"
+                    android:textColor="@color/titan_primary_label"
                     android:textSize="14sp"/>
 
                 <TextView
@@ -694,7 +704,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:text="Last error: (none)"
-                    android:textColor="@color/text_secondary"
+                    android:textColor="@color/titan_secondary_label"
                     android:textSize="12sp"/>
 
                 <LinearLayout
@@ -709,8 +719,8 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="Start"
-                        android:backgroundTint="@color/card_bg"
-                        android:textColor="@color/purple_200"/>
+                        android:backgroundTint="@color/titan_secondary_button_tint"
+                        android:textColor="@color/titan_primary"/>
 
                     <Space android:layout_width="8dp" android:layout_height="wrap_content"/>
 
@@ -721,7 +731,7 @@
                         android:layout_height="wrap_content"
                         android:text="Stop"
                         android:backgroundTint="@color/danger"
-                        android:textColor="@color/bg_dark"/>
+                        android:textColor="@color/titan_button_text"/>
 
                     <Space android:layout_width="8dp" android:layout_height="wrap_content"/>
 
@@ -731,8 +741,8 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="Demo"
-                        android:backgroundTint="@color/card_bg"
-                        android:textColor="@color/purple_200"/>
+                        android:backgroundTint="@color/titan_secondary_button_tint"
+                        android:textColor="@color/titan_primary"/>
                 </LinearLayout>
 
                 <!-- SECTION: DEVICE INFO -->
@@ -740,7 +750,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="DEVICE INFO"
-                    android:textColor="@color/text_secondary"
+                    android:textColor="@color/titan_secondary_label"
                     android:textSize="12sp"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="8dp"/>
@@ -761,8 +771,8 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:text="Battery"
-                            android:backgroundTint="@color/card_bg"
-                            android:textColor="@color/purple_200"
+                            android:backgroundTint="@color/titan_secondary_button_tint"
+                            android:textColor="@color/titan_primary"
                             style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
                         <Space android:layout_width="8dp" android:layout_height="wrap_content"/>
@@ -773,8 +783,8 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:text="Version"
-                            android:backgroundTint="@color/card_bg"
-                            android:textColor="@color/purple_200"
+                            android:backgroundTint="@color/titan_secondary_button_tint"
+                            android:textColor="@color/titan_primary"
                             style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
                     </LinearLayout>
 
@@ -790,8 +800,8 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:text="Sync Time"
-                            android:backgroundTint="@color/card_bg"
-                            android:textColor="@color/purple_200"
+                            android:backgroundTint="@color/titan_secondary_button_tint"
+                            android:textColor="@color/titan_primary"
                             style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
                         <Space android:layout_width="8dp" android:layout_height="wrap_content"/>
@@ -802,8 +812,8 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:text="Volume"
-                            android:backgroundTint="@color/card_bg"
-                            android:textColor="@color/purple_200"
+                            android:backgroundTint="@color/titan_secondary_button_tint"
+                            android:textColor="@color/titan_primary"
                             style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
                     </LinearLayout>
                 </LinearLayout>
@@ -813,7 +823,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="DEV TOOLS"
-                    android:textColor="@color/text_secondary"
+                    android:textColor="@color/titan_secondary_label"
                     android:textSize="10sp"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="4dp"
@@ -824,8 +834,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/text_11"
-                    android:backgroundTint="@color/card_bg"
-                    android:textColor="@color/purple_200"
+                    android:backgroundTint="@color/titan_secondary_button_tint"
+                    android:textColor="@color/titan_primary"
                     style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:visibility="gone"/>
 
@@ -834,8 +844,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/text_10"
-                    android:backgroundTint="@color/card_bg"
-                    android:textColor="@color/purple_200"
+                    android:backgroundTint="@color/titan_secondary_button_tint"
+                    android:textColor="@color/titan_primary"
                     android:enabled="false"
                     android:alpha="0.5"
                     style="@style/Widget.MaterialComponents.Button.TextButton"
@@ -846,8 +856,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/text_16"
-                    android:backgroundTint="@color/card_bg"
-                    android:textColor="@color/purple_200"
+                    android:backgroundTint="@color/titan_secondary_button_tint"
+                    android:textColor="@color/titan_primary"
                     android:enabled="false"
                     android:alpha="0.5"
                     style="@style/Widget.MaterialComponents.Button.TextButton"
@@ -858,8 +868,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/text_17"
-                    android:backgroundTint="@color/card_bg"
-                    android:textColor="@color/purple_200"
+                    android:backgroundTint="@color/titan_secondary_button_tint"
+                    android:textColor="@color/titan_primary"
                     android:enabled="false"
                     android:alpha="0.5"
                     style="@style/Widget.MaterialComponents.Button.TextButton"
@@ -871,7 +881,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:text="Wi-Fi Command Test: Idle"
-                    android:textColor="@color/text_secondary"
+                    android:textColor="@color/titan_secondary_label"
                     android:textSize="12sp" />
 
                 <Button
@@ -880,8 +890,8 @@
                     android:layout_height="wrap_content"
                     android:text="Wi-Fi Command Test"
                     android:textAllCaps="false"
-                    android:backgroundTint="@color/card_bg"
-                    android:textColor="@color/cyan_accent"
+                    android:backgroundTint="@color/titan_secondary_button_tint"
+                    android:textColor="@color/titan_primary"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
 
                 </LinearLayout>
@@ -895,7 +905,7 @@
         android:id="@+id/bottom_navigation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/card_bg"
+        android:background="@color/titan_card_background"
         android:visibility="gone"
         app:itemIconTint="@color/bottom_nav_item"
         app:itemTextColor="@color/bottom_nav_item"

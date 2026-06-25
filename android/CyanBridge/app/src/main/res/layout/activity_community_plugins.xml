@@ -3,16 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_dark"
+    android:background="@color/titan_app_background"
     android:fitsSystemWindows="true">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/bg_dark"
+        android:background="@color/titan_app_background"
         app:title="Community Plugins"
-        app:titleTextColor="@color/text_primary"
+        app:titleTextColor="@color/titan_primary_label"
         app:menu="@menu/menu_community_plugins"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,7 +46,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Discover community-built automations"
-                    android:textColor="@color/text_primary"
+                    android:textColor="@color/titan_primary_label"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -55,7 +55,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:text="Find trending plugins, compare what users love, and install new workflows in seconds."
-                    android:textColor="@color/text_primary"
+                    android:textColor="@color/titan_primary_label"
                     android:textSize="13sp" />
             </LinearLayout>
 
@@ -65,7 +65,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
                 android:text="Future notice: top plugins will have real cash prizes for developers, proportional to the number of Pro subscription users with the plugin enabled."
-                android:textColor="@color/text_secondary"
+                android:textColor="@color/titan_secondary_label"
                 android:textSize="12sp" />
 
             <com.google.android.material.card.MaterialCardView
@@ -73,10 +73,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
-                app:cardBackgroundColor="@color/card_bg"
+                app:cardBackgroundColor="@color/titan_card_background"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="3dp"
-                app:strokeColor="#2A5168"
+                app:strokeColor="@color/titan_border"
                 app:strokeWidth="1dp">
 
                 <LinearLayout
@@ -89,7 +89,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Gemini/ChatGPT Image Questions Automation"
-                        android:textColor="@color/text_primary"
+                        android:textColor="@color/titan_primary_label"
                         android:textSize="15sp"
                         android:textStyle="bold" />
 
@@ -98,7 +98,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:text="Required when using Gemini or ChatGPT image questions with Tasker automation."
-                        android:textColor="@color/text_secondary"
+                        android:textColor="@color/titan_secondary_label"
                         android:textSize="12sp" />
 
                     <TextView
@@ -107,7 +107,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
                         android:text="Status: Not downloaded"
-                        android:textColor="@color/cyan_accent"
+                        android:textColor="@color/titan_primary"
                         android:textSize="12sp"
                         android:textStyle="bold" />
 
@@ -124,7 +124,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Download plugin"
-                            android:textColor="@color/text_primary" />
+                            android:textColor="@color/titan_primary_label" />
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/btn_plugin_image_automation_dismiss"
@@ -133,7 +133,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="4dp"
                             android:text="Already have it"
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/titan_secondary_label"
                             android:textSize="11sp" />
                     </LinearLayout>
                 </LinearLayout>
@@ -144,7 +144,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Filter / Sort"
-                android:textColor="@color/cyan_accent"
+                android:textColor="@color/titan_primary"
                 android:textSize="12sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.1" />
@@ -185,7 +185,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
                 android:text="TRENDING PLUGINS"
-                android:textColor="@color/cyan_accent"
+                android:textColor="@color/titan_primary"
                 android:textSize="12sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.1" />
@@ -201,7 +201,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
                 android:text="TOP VOTED"
-                android:textColor="@color/cyan_accent"
+                android:textColor="@color/titan_primary"
                 android:textSize="12sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.1" />
@@ -217,7 +217,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
                 android:text="TOP DOWNLOADED"
-                android:textColor="@color/cyan_accent"
+                android:textColor="@color/titan_primary"
                 android:textSize="12sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.1" />
@@ -238,8 +238,8 @@
         android:layout_margin="16dp"
         android:contentDescription="Publish plugin"
         android:src="@android:drawable/ic_input_add"
-        app:backgroundTint="@color/cyan_accent"
-        app:tint="@color/bg_dark"
+        app:backgroundTint="@color/titan_primary_button_tint"
+        app:tint="@color/titan_button_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation" />
 
@@ -247,7 +247,7 @@
         android:id="@+id/bottom_navigation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/card_bg"
+        android:background="@color/titan_card_background"
         app:itemIconTint="@color/bottom_nav_item"
         app:itemTextColor="@color/bottom_nav_item"
         app:labelVisibilityMode="labeled"

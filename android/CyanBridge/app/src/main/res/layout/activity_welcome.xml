@@ -2,34 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_dark"
+    android:background="@color/titan_app_background"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="24dp">
 
-    <FrameLayout
-        android:id="@+id/logo_slot"
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
+    <ImageView
+        android:id="@+id/iv_titan_logo"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="24dp"
-        android:background="@drawable/bg_logo_slot_placeholder"
-        android:padding="18dp">
-
-        <ImageView
-            android:id="@+id/iv_future_logo"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:contentDescription=""
-            android:scaleType="fitCenter"
-            android:src="@android:color/transparent" />
-    </FrameLayout>
+        android:contentDescription="@string/app_name"
+        android:scaleType="fitCenter"
+        android:src="@drawable/titan_smart_app_logo" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/welcome_title"
         android:textAlignment="center"
-        android:textColor="@color/cyan_accent"
+        android:textColor="@color/titan_primary"
         android:textSize="24sp"
         android:textStyle="bold" />
 
@@ -39,7 +31,7 @@
         android:layout_marginTop="20dp"
         android:text="@string/welcome_body"
         android:textAlignment="center"
-        android:textColor="@color/text_secondary"
+        android:textColor="@color/titan_secondary_label"
         android:textSize="16sp" />
 
     <Button
@@ -47,8 +39,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:backgroundTint="@color/cyan_accent"
+        android:backgroundTint="@color/titan_primary_button_tint"
         android:text="@string/welcome_button"
-        android:textColor="@color/bg_dark" />
+        android:textColor="@color/titan_button_text" />
 
 </LinearLayout>

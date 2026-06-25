@@ -271,6 +271,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private var downloadTransferCommandProgressDetected = false
     private var downloadTransferCallbackError: Int? = null
     private var downloadPausedForReconnect = false
+    private var takePhotoAndDownloadJob: Job? = null
     private var officialWifiNetworkCallback: ConnectivityManager.NetworkCallback? = null
     private var wifiCommandTestJob: Job? = null
     private var wifiCommandTestManager: WifiP2pManagerSingleton? = null
@@ -408,6 +409,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     override fun onDestroy() {
         super.onDestroy()
         wifiCommandTestJob?.cancel()
+        takePhotoAndDownloadJob?.cancel()
         cleanupWifiCommandTest()
         tts?.stop()
         tts?.shutdown()
@@ -562,6 +564,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             binding.btnSetTime,
             binding.btnVersion,
             binding.btnCamera,
+            binding.btnTakePhotoAndDownload,
             binding.btnVideo,
             binding.btnRecord,
             binding.btnBt,
@@ -779,6 +782,10 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                             //Execute start and end
                         }
                     }
+                }
+
+                binding.btnTakePhotoAndDownload -> {
+                    takePhotoAndDownload()
                 }
 
                 binding.btnVideo -> {
@@ -1329,8 +1336,8 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     }
 
     private fun refreshAiModeButtons() {
-        val activeColor = ContextCompat.getColor(this, R.color.cyan_accent)
-        val inactiveColor = ContextCompat.getColor(this, R.color.text_secondary)
+        val activeColor = ContextCompat.getColor(this, R.color.titan_primary)
+        val inactiveColor = ContextCompat.getColor(this, R.color.titan_secondary_label)
 
         binding.btnModeGemini.setTextColor(if (aiAssistantMode == AI_MODE_GEMINI) activeColor else inactiveColor)
         binding.btnModeChatgpt.setTextColor(if (aiAssistantMode == AI_MODE_CHATGPT) activeColor else inactiveColor)
@@ -2928,6 +2935,99 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         if (likely.isNotEmpty()) return likely.first()
 
         return null
+    }
+
+    private fun takePhotoAndDownload() {
+        if (takePhotoAndDownloadJob?.isActive == true) {
+            Toast.makeText(this, "Take Photo and Download already running.", Toast.LENGTH_SHORT).show()
+            return
+        }
+        if (downloadAttemptJob?.isActive == true || downloadInProgress) {
+            Toast.makeText(this, "Sync already running. Stop it first.", Toast.LENGTH_LONG).show()
+            return
+        }
+        if (!BleOperateManager.getInstance().isConnected) {
+            Toast.makeText(this, "Bluetooth not connected. Connect glasses first.", Toast.LENGTH_LONG).show()
+            syncError("TakePhotoDownload", "Bluetooth not connected")
+            return
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+            !XXPermissions.isGranted(this, "android.permission.NEARBY_WIFI_DEVICES")
+        ) {
+            requestNearbyWifiDevicesPermission(this, object : OnPermissionCallback {
+                override fun onGranted(permissions: MutableList<String>, all: Boolean) {
+                    if (all) {
+                        startTakePhotoAndDownloadInternal()
+                    } else {
+                        Toast.makeText(this@MainActivity, "Wi-Fi permission missing.", Toast.LENGTH_LONG).show()
+                    }
+                }
+
+                override fun onDenied(permissions: MutableList<String>, never: Boolean) {
+                    super.onDenied(permissions, never)
+                    syncWarn("TakePhotoDownload", "NEARBY_WIFI_DEVICES denied: never=$never permissions=$permissions")
+                    if (never) {
+                        XXPermissions.startPermissionActivity(this@MainActivity, permissions)
+                    }
+                }
+            })
+            return
+        }
+
+        startTakePhotoAndDownloadInternal()
+    }
+
+    private fun startTakePhotoAndDownloadInternal() {
+        takePhotoAndDownloadJob = CoroutineScope(Dispatchers.Main).launch {
+            Toast.makeText(this@MainActivity, "Taking photo, then syncing...", Toast.LENGTH_SHORT).show()
+            setTransferUiVisible(true)
+            resetTransferUiState()
+            setTransferDetail("Taking photo...")
+            syncInfo("TakePhotoDownload", "Automation started: take photo, then enable Wi-Fi/P2P sync")
+
+            val photoResponse = sendTakePhotoCommandForDownload()
+            if (photoResponse == null) {
+                syncWarn("TakePhotoDownload", "Photo command timed out; continuing to sync in case the glasses captured it")
+            } else {
+                syncInfo(
+                    "TakePhotoDownload",
+                    "Photo command response: dataType=${photoResponse.dataType}, error=${photoResponse.errorCode}, workTypeIng=${photoResponse.workTypeIng}"
+                )
+            }
+
+            setTransferDetail("Waiting for photo to save on glasses...")
+            delay(4_000)
+            setTransferDetail("Starting Wi-Fi/P2P sync for new photo...")
+            syncInfo("TakePhotoDownload", "Starting Sync Data after photo capture wait")
+            startDataDownload()
+        }
+    }
+
+    private suspend fun sendTakePhotoCommandForDownload(): GlassModelControlResponse? {
+        val deferred = CompletableDeferred<GlassModelControlResponse?>()
+        try {
+            LargeDataHandler.getInstance().glassesControl(
+                byteArrayOf(0x02, 0x01, 0x01)
+            ) { _, response ->
+                recordTechnicalSyncRow(
+                    action = "Capture photo",
+                    uuid = bleWriteUuidLabel(),
+                    command = "02 01 01",
+                    response = "dataType=${response.dataType}, errorCode=${response.errorCode}, workTypeIng=${response.workTypeIng}, p2pIp=${response.p2pIp}",
+                    status = if (response.dataType == 1 && response.errorCode == 0) "Confirmed" else "Not confirmed",
+                )
+                if (!deferred.isCompleted) {
+                    deferred.complete(response)
+                }
+            }
+        } catch (t: Throwable) {
+            syncError("TakePhotoDownload", "Photo command failed: ${t.message}", t)
+            if (!deferred.isCompleted) {
+                deferred.complete(null)
+            }
+        }
+        return withTimeoutOrNull(5_000) { deferred.await() }
     }
 
     private fun startDataDownload() {

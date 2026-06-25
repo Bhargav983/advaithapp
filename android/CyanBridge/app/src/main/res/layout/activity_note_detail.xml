@@ -4,15 +4,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_dark">
+    android:background="@color/titan_app_background">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/bg_dark"
+        android:background="@color/titan_app_background"
         app:title="Note"
-        app:titleTextColor="@color/text_primary"
+        app:titleTextColor="@color/titan_primary_label"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -31,7 +31,7 @@
             android:id="@+id/tv_note_body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/text_primary"
+            android:textColor="@color/titan_primary_label"
             android:textSize="14sp"
             android:textIsSelectable="true"
             android:lineSpacingExtra="4dp"
@@ -55,8 +55,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Copy"
-            android:backgroundTint="@color/card_bg"
-            android:textColor="@color/cyan_accent" />
+            android:backgroundTint="@color/titan_secondary_button_tint"
+            android:textColor="@color/titan_primary" />
 
         <Space
             android:layout_width="12dp"
@@ -68,8 +68,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Share"
-            android:backgroundTint="@color/cyan_accent"
-            android:textColor="@color/bg_dark" />
+            android:backgroundTint="@color/titan_primary_button_tint"
+            android:textColor="@color/titan_button_text" />
 
     </LinearLayout>
 

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_dark"
+    android:background="@color/titan_app_background"
     android:fitsSystemWindows="true">
 
     <TextView
@@ -13,7 +13,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="Pro Subscription Settings"
-        android:textColor="@color/text_primary"
+        android:textColor="@color/titan_primary_label"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +26,7 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="6dp"
         android:text="Configure premium features for cloud sync, plugin rewards, support, and early access." 
-        android:textColor="@color/text_secondary"
+        android:textColor="@color/titan_secondary_label"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,10 +52,10 @@
                 android:id="@+id/card_section_plan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/card_bg"
+                app:cardBackgroundColor="@color/titan_card_background"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="3dp"
-                app:strokeColor="#2A5168"
+                app:strokeColor="@color/titan_border"
                 app:strokeWidth="1dp">
 
                 <LinearLayout
@@ -70,7 +70,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Plan &amp; account"
-                        android:textColor="@color/cyan_accent"
+                        android:textColor="@color/titan_primary"
                         android:textSize="15sp"
                         android:textStyle="bold" />
 
@@ -80,7 +80,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="Status: Unknown"
-                        android:textColor="@color/text_primary"
+                        android:textColor="@color/titan_primary_label"
                         android:textSize="13sp" />
 
                     <TextView
@@ -89,7 +89,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="Plan: -"
-                        android:textColor="@color/text_secondary"
+                        android:textColor="@color/titan_secondary_label"
                         android:textSize="12sp" />
 
                     <TextView
@@ -98,7 +98,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="Expires: -"
-                        android:textColor="@color/text_secondary"
+                        android:textColor="@color/titan_secondary_label"
                         android:textSize="12sp" />
 
                     <TextView
@@ -107,7 +107,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="Last verified: -"
-                        android:textColor="@color/text_secondary"
+                        android:textColor="@color/titan_secondary_label"
                         android:textSize="12sp" />
 
                     <com.google.android.material.button.MaterialButton
@@ -124,7 +124,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="Email: -"
-                        android:textColor="@color/text_secondary"
+                        android:textColor="@color/titan_secondary_label"
                         android:textSize="12sp" />
 
                     <TextView
@@ -133,7 +133,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="API token: -"
-                        android:textColor="@color/text_secondary"
+                        android:textColor="@color/titan_secondary_label"
                         android:textSize="12sp" />
 
                     <TextView
@@ -142,7 +142,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="Subscription: -"
-                        android:textColor="@color/text_secondary"
+                        android:textColor="@color/titan_secondary_label"
                         android:textSize="12sp" />
 
                     <com.google.android.material.button.MaterialButton
@@ -167,10 +167,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                app:cardBackgroundColor="@color/card_bg"
+                app:cardBackgroundColor="@color/titan_card_background"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="3dp"
-                app:strokeColor="#2A5168"
+                app:strokeColor="@color/titan_border"
                 app:strokeWidth="1dp">
 
                 <LinearLayout
@@ -185,7 +185,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Beta cloud feature"
-                        android:textColor="@color/cyan_accent"
+                        android:textColor="@color/titan_primary"
                         android:textSize="15sp"
                         android:textStyle="bold" />
 
@@ -195,7 +195,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="Not signed up yet."
-                        android:textColor="@color/text_secondary"
+                        android:textColor="@color/titan_secondary_label"
                         android:textSize="12sp" />
 
                     <com.google.android.material.button.MaterialButton
@@ -213,7 +213,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                app:cardBackgroundColor="@color/card_bg"
+                app:cardBackgroundColor="@color/titan_card_background"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="3dp">
 
@@ -229,7 +229,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="AI models (Pro)"
-                        android:textColor="@color/cyan_accent"
+                        android:textColor="@color/titan_primary"
                         android:textSize="15sp"
                         android:textStyle="bold" />
 
@@ -239,7 +239,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="Quota: unknown"
-                        android:textColor="@color/text_secondary"
+                        android:textColor="@color/titan_secondary_label"
                         android:textSize="12sp" />
 
                     <LinearLayout
@@ -274,7 +274,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="Requests model"
-                        android:textColor="@color/text_secondary"
+                        android:textColor="@color/titan_secondary_label"
                         android:textSize="12sp" />
 
                     <Spinner
@@ -288,7 +288,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="AI questions model"
-                        android:textColor="@color/text_secondary"
+                        android:textColor="@color/titan_secondary_label"
                         android:textSize="12sp" />
 
                     <Spinner
@@ -302,7 +302,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="Tasks model"
-                        android:textColor="@color/text_secondary"
+                        android:textColor="@color/titan_secondary_label"
                         android:textSize="12sp" />
 
                     <Spinner
@@ -318,7 +318,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                app:cardBackgroundColor="@color/card_bg"
+                app:cardBackgroundColor="@color/titan_card_background"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="3dp">
 
@@ -334,7 +334,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Cloud &amp; Security"
-                        android:textColor="@color/cyan_accent"
+                        android:textColor="@color/titan_primary"
                         android:textSize="15sp"
                         android:textStyle="bold" />
 
@@ -344,14 +344,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="Encrypted cloud sync"
-                        android:textColor="@color/text_primary" />
+                        android:textColor="@color/titan_primary_label" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="Backup frequency"
-                        android:textColor="@color/text_secondary"
+                        android:textColor="@color/titan_secondary_label"
                         android:textSize="12sp" />
 
                     <Spinner
@@ -367,7 +367,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                app:cardBackgroundColor="@color/card_bg"
+                app:cardBackgroundColor="@color/titan_card_background"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="3dp">
 
@@ -383,7 +383,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Ecosystem &amp; Support"
-                        android:textColor="@color/cyan_accent"
+                        android:textColor="@color/titan_primary"
                         android:textSize="15sp"
                         android:textStyle="bold" />
 
@@ -393,7 +393,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="Contribute to plugin rewards pool"
-                        android:textColor="@color/text_primary" />
+                        android:textColor="@color/titan_primary_label" />
 
                     <Switch
                         android:id="@+id/switch_priority_support"
@@ -401,14 +401,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="Priority support enabled"
-                        android:textColor="@color/text_primary" />
+                        android:textColor="@color/titan_primary_label" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="Preferred support channel"
-                        android:textColor="@color/text_secondary"
+                        android:textColor="@color/titan_secondary_label"
                         android:textSize="12sp" />
 
                     <Spinner
@@ -424,7 +424,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                app:cardBackgroundColor="@color/card_bg"
+                app:cardBackgroundColor="@color/titan_card_background"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="3dp">
 
@@ -440,7 +440,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Future Devices"
-                        android:textColor="@color/cyan_accent"
+                        android:textColor="@color/titan_primary"
                         android:textSize="15sp"
                         android:textStyle="bold" />
 
@@ -450,7 +450,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="Join early access for Meta Ray-Ban, Rokid and other devices"
-                        android:textColor="@color/text_primary" />
+                        android:textColor="@color/titan_primary_label" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>

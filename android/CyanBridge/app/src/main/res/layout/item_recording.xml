@@ -12,7 +12,7 @@
         android:layout_height="40dp"
         android:background="@android:color/transparent"
         android:contentDescription="Play"
-        android:tint="@color/cyan_accent"
+        android:tint="@color/titan_primary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:text="Meeting"
-        android:textColor="@color/text_primary"
+        android:textColor="@color/titan_primary_label"
         android:textStyle="bold"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@id/btn_play"
@@ -38,7 +38,7 @@
         android:layout_marginStart="12dp"
         android:layout_marginTop="4dp"
         android:text="Meta"
-        android:textColor="@color/text_secondary"
+        android:textColor="@color/titan_secondary_label"
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@id/btn_play"
         app:layout_constraintTop_toBottomOf="@id/tv_title"
@@ -62,8 +62,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Transcribe"
-            android:textColor="@color/cyan_accent"
-            android:backgroundTint="@color/card_bg" />
+            android:textColor="@color/titan_primary"
+            android:backgroundTint="@color/titan_secondary_button_tint" />
 
         <Space
             android:layout_width="8dp"
@@ -76,8 +76,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="View Transcription"
-            android:textColor="@color/cyan_accent"
-            android:backgroundTint="@color/card_bg" />
+            android:textColor="@color/titan_primary"
+            android:backgroundTint="@color/titan_secondary_button_tint" />
 
     </LinearLayout>
 

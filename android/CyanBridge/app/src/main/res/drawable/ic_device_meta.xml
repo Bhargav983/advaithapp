@@ -7,6 +7,6 @@
 
     <!-- Simple 'M' mark -->
     <path
-        android:fillColor="#000000"
+        android:fillColor="@color/titan_primary"
         android:pathData="M6,18V6h2.2l3.8,6.2L15.8,6H18v12h-2v-8.4l-3.5,5.7h-1L8,9.6V18z"/>
 </vector>

@@ -3,18 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_dark"
+    android:background="@color/titan_app_background"
     android:fitsSystemWindows="true">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/bg_dark"
+        android:background="@color/titan_app_background"
         app:title="Publish Plugin"
-        app:titleTextColor="@color/text_primary"
+        app:titleTextColor="@color/titan_primary_label"
         app:navigationIcon="@drawable/ic_navigate_before_black_44dp"
-        app:navigationIconTint="@color/text_primary"
+        app:navigationIconTint="@color/titan_primary_label"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -38,14 +38,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Share your automation with the community"
-                android:textColor="@color/text_secondary"
+                android:textColor="@color/titan_secondary_label"
                 android:textSize="14sp" />
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                app:cardBackgroundColor="@color/card_bg"
+                app:cardBackgroundColor="@color/titan_card_background"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp">
 
@@ -59,7 +59,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Plugin Details"
-                        android:textColor="@color/cyan_accent"
+                        android:textColor="@color/titan_primary"
                         android:textStyle="bold"
                         android:textSize="14sp" />
 
@@ -115,7 +115,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="Describe what your plugin does, setup steps, and sample voice commands."
-                        android:textColor="@color/text_secondary"
+                        android:textColor="@color/titan_secondary_label"
                         android:textSize="11sp" />
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -140,7 +140,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                app:cardBackgroundColor="@color/card_bg"
+                app:cardBackgroundColor="@color/titan_card_background"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp">
 
@@ -154,7 +154,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Download Link"
-                        android:textColor="@color/cyan_accent"
+                        android:textColor="@color/titan_primary"
                         android:textStyle="bold"
                         android:textSize="14sp" />
 
@@ -178,7 +178,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="Enter the TaskerNet URL for your profile (e.g., https://taskernet.neuversoft.com/?id=...)"
-                        android:textColor="@color/text_secondary"
+                        android:textColor="@color/titan_secondary_label"
                         android:textSize="11sp" />
 
                 </LinearLayout>
@@ -188,7 +188,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                app:cardBackgroundColor="@color/cyan_dim"
+                app:cardBackgroundColor="@color/titan_primary_light"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="2dp">
 
@@ -202,7 +202,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="How Publishing Works"
-                        android:textColor="@color/cyan_accent"
+                        android:textColor="@color/titan_primary"
                         android:textStyle="bold"
                         android:textSize="14sp" />
 
@@ -211,7 +211,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="1. Your plugin submission is sent to our Termux server for review\n\n2. Once approved, it will appear in the Community Plugins list\n\n3. Top plugins may earn real cash prizes proportional to Pro users"
-                        android:textColor="@color/text_primary"
+                        android:textColor="@color/titan_primary_label"
                         android:textSize="12sp"
                         android:lineSpacingExtra="4dp" />
 
@@ -227,8 +227,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:text="Submit Plugin"
-        android:backgroundTint="@color/cyan_accent"
-        android:textColor="@color/bg_dark"
+        android:backgroundTint="@color/titan_primary_button_tint"
+        android:textColor="@color/titan_button_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

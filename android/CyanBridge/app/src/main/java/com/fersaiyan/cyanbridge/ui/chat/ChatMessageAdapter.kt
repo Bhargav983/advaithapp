@@ -1,7 +1,6 @@
 package com.fersaiyan.cyanbridge.ui.chat
 
 import android.content.res.ColorStateList
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
@@ -66,7 +65,7 @@ class ChatMessageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     class SentVH(private val binding: ItemMessageSentBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: ChatMessage, bubbleColor: Int?) {
             binding.textMessage.text = item.content
-            val color = bubbleColor ?: ContextCompat.getColor(itemView.context, R.color.cyan_accent)
+            val color = bubbleColor ?: ContextCompat.getColor(itemView.context, R.color.titan_primary)
             tintBubble(binding.textMessage, color)
         }
     }
@@ -74,7 +73,7 @@ class ChatMessageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     class ReceivedVH(private val binding: ItemMessageReceivedBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: ChatMessage, bubbleColor: Int?) {
             binding.textMessage.text = item.content
-            val color = bubbleColor ?: ContextCompat.getColor(itemView.context, R.color.card_bg)
+            val color = bubbleColor ?: ContextCompat.getColor(itemView.context, R.color.titan_card_background)
             tintBubble(binding.textMessage, color)
         }
     }
@@ -86,9 +85,9 @@ class ChatMessageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         private fun tintBubble(textView: TextView, bubbleColor: Int) {
             textView.backgroundTintList = ColorStateList.valueOf(bubbleColor)
             val textColor = if (ColorUtils.calculateLuminance(bubbleColor) > 0.6) {
-                Color.BLACK
+                ContextCompat.getColor(textView.context, R.color.titan_primary_label)
             } else {
-                Color.WHITE
+                ContextCompat.getColor(textView.context, R.color.titan_button_text)
             }
             textView.setTextColor(textColor)
         }

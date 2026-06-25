@@ -3,18 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_dark"
+    android:background="@color/titan_app_background"
     android:fitsSystemWindows="true">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/bg_dark"
+        android:background="@color/titan_app_background"
         app:navigationIcon="@drawable/ic_chevron_right"
-        app:navigationIconTint="@color/text_primary"
+        app:navigationIconTint="@color/titan_primary_label"
         app:title="Local Models"
-        app:titleTextColor="@color/text_primary"
+        app:titleTextColor="@color/titan_primary_label"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -38,7 +38,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/card_bg"
+                app:cardBackgroundColor="@color/titan_card_background"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp">
 
@@ -52,7 +52,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="ENGINE STATUS"
-                        android:textColor="@color/cyan_accent"
+                        android:textColor="@color/titan_primary"
                         android:textStyle="bold"
                         android:textSize="12sp"
                         android:letterSpacing="0.1" />
@@ -63,7 +63,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="Backend: llama.cpp (Kotlin binding)"
-                        android:textColor="@color/text_primary"
+                        android:textColor="@color/titan_primary_label"
                         android:textSize="14sp" />
 
                     <TextView
@@ -72,7 +72,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
                         android:text=""
-                        android:textColor="@color/text_secondary"
+                        android:textColor="@color/titan_secondary_label"
                         android:textSize="12sp" />
 
                     <TextView
@@ -81,7 +81,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
                         android:text="No local model selected"
-                        android:textColor="@color/text_secondary"
+                        android:textColor="@color/titan_secondary_label"
                         android:textSize="12sp" />
 
                     <LinearLayout
@@ -114,7 +114,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:text="No local model installed yet. Start with a catalog download or import GGUF/LiteRT files (.gguf/.litertlm/.task)."
-                        android:textColor="@color/text_secondary"
+                        android:textColor="@color/titan_secondary_label"
                         android:textSize="12sp" />
 
                     <com.google.android.material.button.MaterialButton
@@ -131,7 +131,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                app:cardBackgroundColor="@color/card_bg"
+                app:cardBackgroundColor="@color/titan_card_background"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp">
 
@@ -145,7 +145,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="INSTALLED MODELS"
-                        android:textColor="@color/cyan_accent"
+                        android:textColor="@color/titan_primary"
                         android:textStyle="bold"
                         android:textSize="12sp"
                         android:letterSpacing="0.1" />
@@ -197,7 +197,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                app:cardBackgroundColor="@color/card_bg"
+                app:cardBackgroundColor="@color/titan_card_background"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp">
 
@@ -221,7 +221,7 @@
                             android:layout_weight="1"
                             android:letterSpacing="0.1"
                             android:text="CURATED CATALOG"
-                            android:textColor="@color/cyan_accent"
+                            android:textColor="@color/titan_primary"
                             android:textSize="12sp"
                             android:textStyle="bold" />
 
@@ -231,7 +231,7 @@
                             android:layout_height="24dp"
                             android:contentDescription="Expand/collapse"
                             android:src="@drawable/ic_expand_more"
-                            android:tint="@color/text_secondary" />
+                            android:tint="@color/titan_secondary_label" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -252,7 +252,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:text="Some model families may require accepted terms or a Hugging Face token."
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/titan_secondary_label"
                             android:textSize="12sp" />
                     </LinearLayout>
                 </LinearLayout>
@@ -263,7 +263,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                app:cardBackgroundColor="@color/card_bg"
+                app:cardBackgroundColor="@color/titan_card_background"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp">
 
@@ -287,7 +287,7 @@
                             android:layout_weight="1"
                             android:letterSpacing="0.1"
                             android:text="GENERATION SETTINGS"
-                            android:textColor="@color/cyan_accent"
+                            android:textColor="@color/titan_primary"
                             android:textSize="12sp"
                             android:textStyle="bold" />
 
@@ -297,7 +297,7 @@
                             android:layout_height="24dp"
                             android:contentDescription="Expand/collapse"
                             android:src="@drawable/ic_expand_more"
-                            android:tint="@color/text_secondary" />
+                            android:tint="@color/titan_secondary_label" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -311,7 +311,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Performance profile"
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/titan_secondary_label"
                             android:textSize="12sp" />
 
                         <Spinner
@@ -325,7 +325,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:text="Model runtime"
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/titan_secondary_label"
                             android:textSize="12sp" />
 
                         <Spinner
@@ -340,7 +340,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
                             android:text=""
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/titan_secondary_label"
                             android:textSize="12sp" />
 
                         <TextView
@@ -348,7 +348,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:text="Compute backend"
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/titan_secondary_label"
                             android:textSize="12sp" />
 
                         <Spinner
@@ -397,7 +397,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
                             android:text=""
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/titan_secondary_label"
                             android:textSize="12sp" />
 
                         <com.google.android.material.textfield.TextInputLayout
@@ -512,7 +512,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:text="Prompt template override"
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/titan_secondary_label"
                             android:textSize="12sp" />
 
                         <Spinner
@@ -527,7 +527,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:text="Experimental structured JSON mode"
-                            android:textColor="@color/text_primary" />
+                            android:textColor="@color/titan_primary_label" />
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
@@ -564,7 +564,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                app:cardBackgroundColor="@color/card_bg"
+                app:cardBackgroundColor="@color/titan_card_background"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp">
 
@@ -580,7 +580,7 @@
                         android:layout_height="wrap_content"
                         android:max="100"
                         android:visibility="gone"
-                        app:indicatorColor="@color/cyan_accent" />
+                        app:indicatorColor="@color/titan_primary" />
 
                     <TextView
                         android:id="@+id/tv_download_progress"
@@ -588,7 +588,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text=""
-                        android:textColor="@color/text_secondary"
+                        android:textColor="@color/titan_secondary_label"
                         android:textSize="12sp" />
 
                     <com.google.android.material.button.MaterialButton
@@ -613,7 +613,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text=""
-                        android:textColor="@color/text_secondary"
+                        android:textColor="@color/titan_secondary_label"
                         android:textSize="12sp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>

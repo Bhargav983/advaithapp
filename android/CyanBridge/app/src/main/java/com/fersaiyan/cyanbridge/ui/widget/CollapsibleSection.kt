@@ -45,10 +45,10 @@ class CollapsibleSection @JvmOverloads constructor(
         
         titleText = TextView(context).apply {
             layoutParams = LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f)
-            setTextColor(context.getColor(R.color.cyan_accent))
+            setTextColor(context.getColor(R.color.titan_primary))
             textSize = 12f
             letterSpacing = 0.1f
-            setTextColor(resources.getColor(R.color.cyan_accent, null))
+            setTextColor(resources.getColor(R.color.titan_primary, null))
         }
         
         expandIcon = ImageView(context).apply {
@@ -56,7 +56,7 @@ class CollapsibleSection @JvmOverloads constructor(
                 gravity = android.view.Gravity.CENTER_VERTICAL
             }
             setImageResource(R.drawable.ic_expand_more)
-            setColorFilter(resources.getColor(R.color.text_secondary, null))
+            setColorFilter(resources.getColor(R.color.titan_secondary_label, null))
         }
         
         headerContainer.addView(titleText)

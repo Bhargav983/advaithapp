@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_dark"
+    android:background="@color/titan_app_background"
     android:fitsSystemWindows="true">
 
     <TextView
@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Pro Subscription"
-        android:textColor="@color/text_primary"
+        android:textColor="@color/titan_primary_label"
         android:textSize="20sp"
         android:textStyle="bold"
         android:layout_marginTop="16dp"
@@ -24,7 +24,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Use the app COMPLETELY FREE with local models, or unlock optional premium features."
-        android:textColor="@color/text_secondary"
+        android:textColor="@color/titan_secondary_label"
         android:textSize="14sp"
         android:layout_marginTop="6dp"
         android:layout_marginHorizontal="16dp"
@@ -37,7 +37,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="💡 The whole app works offline with local AI (Qwen, Whisper). Pro is only for Cloud AI &amp; Cloud Sync."
-        android:textColor="@color/cyan_accent"
+        android:textColor="@color/titan_primary"
         android:textSize="12sp"
         android:layout_marginTop="4dp"
         android:layout_marginHorizontal="16dp"
@@ -66,7 +66,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/card_bg"
+                app:cardBackgroundColor="@color/titan_card_background"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp">
 
@@ -80,7 +80,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="💜 Help Fund the Project"
-                        android:textColor="@color/cyan_accent"
+                        android:textColor="@color/titan_primary"
                         android:textStyle="bold"
                         android:textSize="16sp" />
 
@@ -89,7 +89,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="Keep our project alive and growing. Your subscription directly supports ongoing development, bug fixes, and expanding support to devices like Meta Ray-Ban, Rokid, and other manufacturers."
-                        android:textColor="@color/text_secondary"
+                        android:textColor="@color/titan_secondary_label"
                         android:textSize="14sp" />
 
                 </LinearLayout>
@@ -100,7 +100,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                app:cardBackgroundColor="@color/card_bg"
+                app:cardBackgroundColor="@color/titan_card_background"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp">
 
@@ -114,7 +114,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="🛠️ Support Plugin Developers"
-                        android:textColor="@color/cyan_accent"
+                        android:textColor="@color/titan_primary"
                         android:textStyle="bold"
                         android:textSize="16sp" />
 
@@ -123,7 +123,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="Contribute to developers who share creative workflows and automation plugins for the app. Enable a thriving ecosystem of extensions."
-                        android:textColor="@color/text_secondary"
+                        android:textColor="@color/titan_secondary_label"
                         android:textSize="14sp" />
 
                 </LinearLayout>
@@ -134,7 +134,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                app:cardBackgroundColor="@color/card_bg"
+                app:cardBackgroundColor="@color/titan_card_background"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp">
 
@@ -148,7 +148,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="🔒 Encrypted Cloud Storage"
-                        android:textColor="@color/cyan_accent"
+                        android:textColor="@color/titan_primary"
                         android:textStyle="bold"
                         android:textSize="16sp" />
 
@@ -157,7 +157,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="Leverage our trusted encrypted cloud for your private memories. Sync across devices with end-to-end encryption."
-                        android:textColor="@color/text_secondary"
+                        android:textColor="@color/titan_secondary_label"
                         android:textSize="14sp" />
 
                 </LinearLayout>
@@ -168,7 +168,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                app:cardBackgroundColor="@color/card_bg"
+                app:cardBackgroundColor="@color/titan_card_background"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp">
 
@@ -182,7 +182,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="⚡ Priority Support"
-                        android:textColor="@color/cyan_accent"
+                        android:textColor="@color/titan_primary"
                         android:textStyle="bold"
                         android:textSize="16sp" />
 
@@ -191,7 +191,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="Get priority access to support channels and early access to new features and beta releases."
-                        android:textColor="@color/text_secondary"
+                        android:textColor="@color/titan_secondary_label"
                         android:textSize="14sp" />
 
                 </LinearLayout>
@@ -202,7 +202,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                app:cardBackgroundColor="@color/card_bg"
+                app:cardBackgroundColor="@color/titan_card_background"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp"
                 app:strokeColor="@color/danger"
@@ -227,7 +227,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="Enable silent capture of audio, photos, and videos from your glasses. Requires one-time Standard or Max plan payment for the modded firmware flash. Cancel subscription afterward and keep Stealth Mode forever!"
-                        android:textColor="@color/text_secondary"
+                        android:textColor="@color/titan_secondary_label"
                         android:textSize="14sp" />
 
                 </LinearLayout>
@@ -238,7 +238,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                app:cardBackgroundColor="@color/cyan_dim"
+                app:cardBackgroundColor="@color/titan_primary_light"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="2dp">
 
@@ -252,7 +252,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="🎉 Use the App COMPLETELY FREE"
-                        android:textColor="@color/cyan_accent"
+                        android:textColor="@color/titan_primary"
                         android:textStyle="bold"
                         android:textSize="14sp" />
 
@@ -261,7 +261,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="The entire app works offline with local AI models (Qwen 2.5 1.7B, Whisper for transcription). No internet needed! Pro is only required for Cloud AI API calls and optional Cloud Sync."
-                        android:textColor="@color/text_primary"
+                        android:textColor="@color/titan_primary_label"
                         android:textSize="12sp" />
 
                 </LinearLayout>
@@ -272,7 +272,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                app:cardBackgroundColor="@color/card_bg"
+                app:cardBackgroundColor="@color/titan_card_background"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp">
 
@@ -286,7 +286,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="PRICING"
-                        android:textColor="@color/cyan_accent"
+                        android:textColor="@color/titan_primary"
                         android:textStyle="bold"
                         android:textSize="12sp"
                         android:letterSpacing="0.1" />
@@ -302,28 +302,28 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Free Trial — 30 days (rate-limited, while supplies last!)"
-                            android:textColor="@color/text_primary" />
+                            android:textColor="@color/titan_primary_label" />
 
                         <com.google.android.material.radiobutton.MaterialRadioButton
                             android:id="@+id/rb_cheap"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Cheap — $1/month"
-                            android:textColor="@color/text_primary" />
+                            android:textColor="@color/titan_primary_label" />
 
                         <com.google.android.material.radiobutton.MaterialRadioButton
                             android:id="@+id/rb_standard"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Standard — $5/month"
-                            android:textColor="@color/text_primary" />
+                            android:textColor="@color/titan_primary_label" />
 
                         <com.google.android.material.radiobutton.MaterialRadioButton
                             android:id="@+id/rb_max"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Max — $20/month"
-                            android:textColor="@color/text_primary" />
+                            android:textColor="@color/titan_primary_label" />
 
                     </RadioGroup>
 
@@ -335,10 +335,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                app:cardBackgroundColor="@color/card_bg"
+                app:cardBackgroundColor="@color/titan_card_background"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp"
-                app:strokeColor="#2A5168"
+                app:strokeColor="@color/titan_border"
                 app:strokeWidth="1dp">
 
                 <LinearLayout
@@ -351,7 +351,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Alternative checkout"
-                        android:textColor="@color/text_primary"
+                        android:textColor="@color/titan_primary_label"
                         android:textStyle="bold"
                         android:textSize="15sp" />
 
@@ -361,7 +361,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
                         android:text="Use secure website checkout and return automatically. If your account already has an active subscription, we restore it instead of charging again."
-                        android:textColor="@color/text_secondary"
+                        android:textColor="@color/titan_secondary_label"
                         android:textSize="13sp" />
 
                     <com.google.android.material.button.MaterialButton
@@ -371,7 +371,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="Subscribe on Website"
-                        android:textColor="@color/text_primary" />
+                        android:textColor="@color/titan_primary_label" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -379,10 +379,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                app:cardBackgroundColor="@color/card_bg"
+                app:cardBackgroundColor="@color/titan_card_background"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp"
-                app:strokeColor="#2A5168"
+                app:strokeColor="@color/titan_border"
                 app:strokeWidth="1dp">
 
                 <LinearLayout
@@ -395,7 +395,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Prefer Local Models?"
-                        android:textColor="@color/text_primary"
+                        android:textColor="@color/titan_primary_label"
                         android:textStyle="bold"
                         android:textSize="15sp" />
 
@@ -404,7 +404,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
                         android:text="You can still support development with a one-time coffee donation. Every contribution helps us ship faster and support more smartglasses."
-                        android:textColor="@color/text_secondary"
+                        android:textColor="@color/titan_secondary_label"
                         android:textSize="13sp" />
 
                     <com.google.android.material.button.MaterialButton
@@ -414,7 +414,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="Donate via Stripe"
-                        android:textColor="@color/cyan_accent" />
+                        android:textColor="@color/titan_primary" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -425,7 +425,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:visibility="gone"
-                app:cardBackgroundColor="@color/card_bg"
+                app:cardBackgroundColor="@color/titan_card_background"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp"
                 app:strokeColor="@color/danger"
@@ -450,7 +450,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
                         android:text="You can cancel your subscription anytime. You'll keep access until the end of your billing period."
-                        android:textColor="@color/text_secondary"
+                        android:textColor="@color/titan_secondary_label"
                         android:textSize="13sp" />
 
                     <com.google.android.material.button.MaterialButton
@@ -470,7 +470,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Not subscribed"
-                android:textColor="@color/text_secondary"
+                android:textColor="@color/titan_secondary_label"
                 android:textSize="14sp"
                 android:gravity="center" />
 

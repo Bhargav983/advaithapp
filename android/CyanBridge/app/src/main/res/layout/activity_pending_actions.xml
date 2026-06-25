@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_dark">
+    android:background="@color/titan_app_background">
 
     <TextView
         android:id="@+id/tv_title"
@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:text="Pending actions"
-        android:textColor="@color/text_primary"
+        android:textColor="@color/titan_primary_label"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
@@ -26,7 +26,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:text="Pending: 0"
-        android:textColor="@color/text_secondary"
+        android:textColor="@color/titan_secondary_label"
         android:textSize="12sp"
         app:layout_constraintTop_toBottomOf="@id/tv_title"
         app:layout_constraintStart_toStartOf="parent"
@@ -79,7 +79,7 @@
             android:layout_weight="1"
             android:text="Reject"
             app:backgroundTint="@color/danger"
-            android:textColor="@color/bg_dark" />
+            android:textColor="@color/titan_button_text" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_approve"

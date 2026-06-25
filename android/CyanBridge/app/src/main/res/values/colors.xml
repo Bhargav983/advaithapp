@@ -1,33 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
+    <!-- Titan brand color system -->
+    <color name="titan_primary">#09636C</color>
+    <color name="titan_primary_dark">#064E55</color>
+    <color name="titan_primary_light">#E7F5F4</color>
+    <color name="titan_accent">#08ACA7</color>
+    <color name="titan_app_background">#F8FCFC</color>
+    <color name="titan_screen_background">#FFFFFF</color>
+    <color name="titan_card_background">#FFFFFF</color>
+    <color name="titan_primary_label">#1F2937</color>
+    <color name="titan_secondary_label">#6B7280</color>
+    <color name="titan_placeholder_label">#9CA3AF</color>
+    <color name="titan_button_text">#FFFFFF</color>
+    <color name="titan_border">#B7D5D6</color>
+    <color name="titan_divider">#E6EEEE</color>
+    <color name="titan_disabled_bg">#D7E6E7</color>
+    <color name="titan_disabled_text">#8B9A9B</color>
+
+    <!-- Compatibility aliases used by existing screens/components. -->
+    <color name="purple_200">@color/titan_primary</color>
+    <color name="purple_500">@color/titan_primary</color>
+    <color name="purple_700">@color/titan_primary_dark</color>
+    <color name="teal_200">@color/titan_accent</color>
+    <color name="teal_700">@color/titan_primary_dark</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="main_nv_select">@color/titan_primary</color>
+    <color name="main_nv_not_select">@color/titan_secondary_label</color>
+    <color name="main_nv_bg">@color/titan_screen_background</color>
+    <color name="main_nv_text_bg">@color/titan_primary_label</color>
+    <color name="main_line_1">@color/titan_divider</color>
 
-    <!-- 主界面 -->
-    <color name="main_nv_select">#000000</color>
-    <color name="main_nv_not_select">#717171</color>
-    <color name="main_nv_bg">#f9f9f9</color>
-    <color name="main_nv_text_bg">#2F2E41</color>
-    <color name="main_line_1">#adadad</color>
+    <color name="title_bar_left">@color/titan_primary_label</color>
+    <color name="title_bar_center">@color/titan_primary_label</color>
+    <color name="title_bar_right">@color/titan_primary</color>
+    <color name="title_bar_line">@color/titan_divider</color>
 
-    <!-- title bar -->
-    <color name="title_bar_left">#2F2E41</color>
-    <color name="title_bar_center">#2F2E41</color>
-    <color name="title_bar_right">#FF6A00</color>
-    <color name="title_bar_line">#ededed</color>
-
-    <!-- New UI Colors (Cyber Theme) -->
-    <color name="bg_dark">#0B0F14</color>
-    <color name="card_bg">#161B22</color>
-    <color name="cyan_accent">#00E5FF</color>
-    <color name="cyan_dim">#3300E5FF</color>
-    <color name="text_primary">#E6EDF3</color>
-    <color name="text_secondary">#8B949E</color>
+    <color name="bg_dark">@color/titan_app_background</color>
+    <color name="card_bg">@color/titan_card_background</color>
+    <color name="cyan_accent">@color/titan_primary</color>
+    <color name="cyan_dim">@color/titan_primary_light</color>
+    <color name="text_primary">@color/titan_primary_label</color>
+    <color name="text_secondary">@color/titan_secondary_label</color>
     <color name="danger">#FF5252</color>
 </resources>

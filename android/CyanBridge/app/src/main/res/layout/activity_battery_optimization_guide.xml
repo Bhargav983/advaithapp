@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_dark"
+    android:background="@color/titan_app_background"
     android:fillViewport="true">
 
     <LinearLayout
@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/battery_opt_title"
-            android:textColor="@color/cyan_accent"
+            android:textColor="@color/titan_primary"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text=""
-            android:textColor="@color/text_primary"
+            android:textColor="@color/titan_primary_label"
             android:textStyle="bold" />
 
         <TextView
@@ -33,41 +33,41 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@string/battery_opt_body"
-            android:textColor="@color/text_secondary" />
+            android:textColor="@color/titan_secondary_label" />
 
         <Button
             android:id="@+id/btn_disable_optimization"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:backgroundTint="@color/cyan_accent"
+            android:backgroundTint="@color/titan_primary_button_tint"
             android:text="@string/battery_opt_disable_button"
-            android:textColor="@color/bg_dark" />
+            android:textColor="@color/titan_button_text" />
 
         <Button
             android:id="@+id/btn_open_optimization_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:backgroundTint="@color/card_bg"
+            android:backgroundTint="@color/titan_secondary_button_tint"
             android:text="@string/battery_opt_open_list_button"
-            android:textColor="@color/text_primary" />
+            android:textColor="@color/titan_primary_label" />
 
         <Button
             android:id="@+id/btn_open_app_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:backgroundTint="@color/card_bg"
+            android:backgroundTint="@color/titan_secondary_button_tint"
             android:text="@string/battery_opt_open_app_info_button"
-            android:textColor="@color/text_primary" />
+            android:textColor="@color/titan_primary_label" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="@string/battery_opt_lock_app_title"
-            android:textColor="@color/cyan_accent"
+            android:textColor="@color/titan_primary"
             android:textStyle="bold" />
 
         <TextView
@@ -75,23 +75,23 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:text="@string/battery_opt_lock_app_body"
-            android:textColor="@color/text_secondary" />
+            android:textColor="@color/titan_secondary_label" />
 
         <Button
             android:id="@+id/btn_done"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
-            android:backgroundTint="@color/cyan_accent"
+            android:backgroundTint="@color/titan_primary_button_tint"
             android:text="@string/battery_opt_done_button"
-            android:textColor="@color/bg_dark" />
+            android:textColor="@color/titan_button_text" />
 
         <Button
             android:id="@+id/btn_skip"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:backgroundTint="@color/card_bg"
+            android:backgroundTint="@color/titan_secondary_button_tint"
             android:text="@string/battery_opt_skip_button"
             android:textColor="@color/danger" />
     </LinearLayout>

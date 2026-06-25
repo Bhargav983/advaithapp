@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:text="Status: Unknown"
-        android:textColor="@color/text_primary"
+        android:textColor="@color/titan_primary_label"
         android:textSize="14sp" />
 
     <TextView
@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:text="Last error: (none)"
-        android:textColor="@color/text_secondary"
+        android:textColor="@color/titan_secondary_label"
         android:textSize="12sp" />
 
     <LinearLayout
@@ -42,7 +42,7 @@
             android:layout_marginStart="10dp"
             android:text="Stop"
             app:backgroundTint="@color/danger"
-            android:textColor="@color/bg_dark" />
+            android:textColor="@color/titan_button_text" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_agent_demo"
@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:text="Require action confirmation"
-        android:textColor="@color/text_primary" />
+        android:textColor="@color/titan_primary_label" />
 
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/switch_auto_execute_low_risk"
@@ -67,7 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Auto-execute low-risk actions"
-        android:textColor="@color/text_primary" />
+        android:textColor="@color/titan_primary_label" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_view_pending_actions"
@@ -81,7 +81,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Uses the LocalAgentService intent API when available."
-        android:textColor="@color/text_secondary"
+        android:textColor="@color/titan_secondary_label"
         android:textSize="12sp" />
 
 </merge>

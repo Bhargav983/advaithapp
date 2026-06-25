@@ -13,10 +13,10 @@ object ChatAppearancePrefs {
     private fun prefs(context: Context) = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
 
     fun defaultUserBubbleColor(context: Context): Int =
-        ContextCompat.getColor(context, R.color.cyan_accent)
+        ContextCompat.getColor(context, R.color.titan_primary)
 
     fun defaultAssistantBubbleColor(context: Context): Int =
-        ContextCompat.getColor(context, R.color.card_bg)
+        ContextCompat.getColor(context, R.color.titan_card_background)
 
     fun getUserBubbleColor(context: Context): Int =
         prefs(context).getInt(KEY_USER_BUBBLE_COLOR, defaultUserBubbleColor(context))

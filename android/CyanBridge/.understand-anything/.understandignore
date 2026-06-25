@@ -1,0 +1,64 @@
+# .understandignore — patterns for files/dirs to exclude from analysis
+# Syntax: same as .gitignore (globs, # comments, ! negation, trailing / for dirs)
+# Lines below are suggestions — uncomment to activate.
+# Use ! prefix to force-include something excluded by defaults.
+#
+# Built-in defaults (always excluded unless negated):
+#   node_modules/, .git/, dist/, build/, obj/, *.lock, *.min.js, etc.
+#
+
+.understand-anything/
+
+# --- From .gitignore (uncomment to exclude) ---
+
+# *.iml
+.gradle
+/local.properties
+# /.idea/caches
+# /.idea/libraries
+# /.idea/modules.xml
+# /.idea/workspace.xml
+# /.idea/navEditor.xml
+# /.idea/assetWizardSettings.xml
+# .DS_Store
+/build
+# /captures
+.externalNativeBuild
+.cxx
+local.properties
+/tools/_relay_tmp/
+keystore.properties
+*.apk
+*/build/
+moonshine-voice/build/
+*.gguf
+*.gguf.part
+*.bin
+*.safetensors
+app/src/main/assets/models/
+app/src/main/ml/
+# TERMUX_SSH_TAILSCALE_RUNBOOK.md
+
+# --- Detected directories (uncomment to exclude) ---
+
+# docs/
+# scripts/
+
+# --- Test file patterns (uncomment to exclude) ---
+
+# JS / TS
+# *.test.*
+# *.spec.*
+# *.snap
+# C# / .NET
+# **/*Tests.cs
+# **/*Test.cs
+# **/*Fixture.cs
+# **/*.Tests.csproj
+# Java / Kotlin
+# **/src/test/**
+# **/*Test.java
+# **/*IT.java
+# **/*Spec.kt
+# Go
+# **/*_test.go

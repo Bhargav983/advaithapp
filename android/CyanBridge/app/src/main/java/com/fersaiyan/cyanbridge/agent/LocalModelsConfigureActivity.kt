@@ -446,7 +446,7 @@ class LocalModelsConfigureActivity : AppCompatActivity() {
                     append("\n")
                     append(statusText(entry, installedByCatalogId[entry.id]))
                 }
-                setTextColor(resources.getColor(R.color.text_primary, theme))
+                setTextColor(resources.getColor(R.color.titan_primary_label, theme))
                 textSize = 13f
                 setPadding(0, 12, 0, 4)
             }
