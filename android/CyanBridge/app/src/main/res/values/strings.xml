@@ -88,8 +88,14 @@
     <string name="chat_deleted">Chat deleted</string>
     <string name="open_synced_media">View synced photos and videos</string>
     <string name="synced_media_title">Synced photos and videos</string>
+    <string name="synced_media_images_title">Downloaded Images</string>
+    <string name="synced_media_videos_title">Downloaded Videos</string>
+    <string name="synced_media_audios_title">Downloaded Audios</string>
     <string name="synced_media_folder_hint">Showing files from: %1$s</string>
     <string name="synced_media_empty">No synced photos or videos found yet.</string>
+    <string name="synced_media_images_empty">No downloaded images found yet.</string>
+    <string name="synced_media_videos_empty">No downloaded videos found yet.</string>
+    <string name="synced_media_audios_empty">No downloaded audios found yet.</string>
     <string name="synced_media_open_failed">Unable to open this media item.</string>
     <string name="synced_media_video_badge">VIDEO</string>
     <string name="auto_audio_speech_extend">Extend loop when speech detected (avoid cutting conversations)</string>

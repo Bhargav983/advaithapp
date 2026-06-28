@@ -23,6 +23,9 @@ class SyncedMediaGalleryActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySyncedMediaGalleryBinding
     private lateinit var adapter: SyncedMediaAdapter
+    private val mediaFilter: String by lazy {
+        intent.getStringExtra(EXTRA_MEDIA_FILTER)?.lowercase() ?: FILTER_ALL
+    }
 
     private val uiScope = MainScope()
     private var loadJob: Job? = null
@@ -34,6 +37,7 @@ class SyncedMediaGalleryActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = titleForFilter()
 
         binding.tvFolderHint.text = getString(
             R.string.synced_media_folder_hint,
@@ -84,6 +88,7 @@ class SyncedMediaGalleryActivity : AppCompatActivity() {
             adapter.submitList(mediaItems)
             binding.progressLoading.visibility = View.GONE
             binding.emptyState.visibility = if (mediaItems.isEmpty()) View.VISIBLE else View.GONE
+            binding.emptyState.text = emptyTextForFilter()
         }
     }
 
@@ -99,6 +104,7 @@ class SyncedMediaGalleryActivity : AppCompatActivity() {
             MediaStore.Files.FileColumns.MEDIA_TYPE,
         )
 
+        val mediaTypes = mediaTypesForFilter()
         val selection: String
         val selectionArgs: Array<String>
 
@@ -106,10 +112,12 @@ class SyncedMediaGalleryActivity : AppCompatActivity() {
             projection += MediaStore.MediaColumns.RELATIVE_PATH
             selection = buildString {
                 append("(")
-                append(MediaStore.Files.FileColumns.MEDIA_TYPE)
-                append("=? OR ")
-                append(MediaStore.Files.FileColumns.MEDIA_TYPE)
-                append("=?) AND (")
+                mediaTypes.forEachIndexed { index, _ ->
+                    if (index > 0) append(" OR ")
+                    append(MediaStore.Files.FileColumns.MEDIA_TYPE)
+                    append("=?")
+                }
+                append(") AND (")
                 append(MediaStore.MediaColumns.RELATIVE_PATH)
                 append("=? OR ")
                 append(MediaStore.MediaColumns.RELATIVE_PATH)
@@ -117,9 +125,7 @@ class SyncedMediaGalleryActivity : AppCompatActivity() {
                 append(MediaStore.MediaColumns.RELATIVE_PATH)
                 append(" LIKE ?)")
             }
-            selectionArgs = arrayOf(
-                MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE.toString(),
-                MediaStore.Files.FileColumns.MEDIA_TYPE_VIDEO.toString(),
+            selectionArgs = mediaTypes.map { it.toString() }.toTypedArray() + arrayOf(
                 SyncedMediaFolder.relativePath,
                 SyncedMediaFolder.relativePathWithTrailingSlash,
                 SyncedMediaFolder.relativePathLikePattern(),
@@ -131,16 +137,16 @@ class SyncedMediaGalleryActivity : AppCompatActivity() {
             }
             selection = buildString {
                 append("(")
-                append(MediaStore.Files.FileColumns.MEDIA_TYPE)
-                append("=? OR ")
-                append(MediaStore.Files.FileColumns.MEDIA_TYPE)
-                append("=?) AND ")
+                mediaTypes.forEachIndexed { index, _ ->
+                    if (index > 0) append(" OR ")
+                    append(MediaStore.Files.FileColumns.MEDIA_TYPE)
+                    append("=?")
+                }
+                append(") AND ")
                 append(MediaStore.MediaColumns.DATA)
                 append(" LIKE ?")
             }
-            selectionArgs = arrayOf(
-                MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE.toString(),
-                MediaStore.Files.FileColumns.MEDIA_TYPE_VIDEO.toString(),
+            selectionArgs = mediaTypes.map { it.toString() }.toTypedArray() + arrayOf(
                 SyncedMediaFolder.legacyAbsolutePathLikePattern(),
             )
         }
@@ -161,15 +167,16 @@ class SyncedMediaGalleryActivity : AppCompatActivity() {
                     if (idIdx < 0 || typeIdx < 0) continue
 
                     val mediaType = cursor.getInt(typeIdx)
-                    val isVideo = mediaType == MediaStore.Files.FileColumns.MEDIA_TYPE_VIDEO
-                    val isImage = mediaType == MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE
-                    if (!isVideo && !isImage) continue
+                    val kind = kindForMediaType(mediaType) ?: continue
 
                     val id = cursor.getLong(idIdx)
-                    val contentUri = if (isVideo) {
-                        ContentUris.withAppendedId(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, id)
-                    } else {
-                        ContentUris.withAppendedId(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, id)
+                    val contentUri = when (kind) {
+                        SyncedMediaKind.IMAGE ->
+                            ContentUris.withAppendedId(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, id)
+                        SyncedMediaKind.VIDEO ->
+                            ContentUris.withAppendedId(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, id)
+                        SyncedMediaKind.AUDIO ->
+                            ContentUris.withAppendedId(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, id)
                     }
 
                     val name = if (nameIdx >= 0 && !cursor.isNull(nameIdx)) {
@@ -181,7 +188,11 @@ class SyncedMediaGalleryActivity : AppCompatActivity() {
                     val mime = if (mimeIdx >= 0 && !cursor.isNull(mimeIdx)) {
                         cursor.getString(mimeIdx)
                     } else {
-                        if (isVideo) "video/mp4" else "image/jpeg"
+                        when (kind) {
+                            SyncedMediaKind.IMAGE -> "image/jpeg"
+                            SyncedMediaKind.VIDEO -> "video/mp4"
+                            SyncedMediaKind.AUDIO -> "audio/ogg"
+                        }
                     }
 
                     val dateTakenMs = if (dateTakenIdx >= 0 && !cursor.isNull(dateTakenIdx)) {
@@ -201,7 +212,7 @@ class SyncedMediaGalleryActivity : AppCompatActivity() {
                         contentUri = contentUri,
                         displayName = name,
                         mimeType = mime,
-                        isVideo = isVideo,
+                        kind = kind,
                         takenAtMs = if (dateTakenMs > 0L) dateTakenMs else dateAddedMs,
                     )
                 }
@@ -212,7 +223,12 @@ class SyncedMediaGalleryActivity : AppCompatActivity() {
 
     private fun openMediaItem(item: SyncedMediaItem) {
         val intent = Intent(Intent.ACTION_VIEW).apply {
-            setDataAndType(item.contentUri, if (item.isVideo) "video/*" else "image/*")
+            val type = when (item.kind) {
+                SyncedMediaKind.IMAGE -> "image/*"
+                SyncedMediaKind.VIDEO -> "video/*"
+                SyncedMediaKind.AUDIO -> "audio/*"
+            }
+            setDataAndType(item.contentUri, type)
             addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         }
 
@@ -230,5 +246,53 @@ class SyncedMediaGalleryActivity : AppCompatActivity() {
             widthDp >= 600 -> 3
             else -> 2
         }
+    }
+
+    private fun mediaTypesForFilter(): List<Int> {
+        return when (mediaFilter) {
+            FILTER_IMAGES -> listOf(MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE)
+            FILTER_VIDEOS -> listOf(MediaStore.Files.FileColumns.MEDIA_TYPE_VIDEO)
+            FILTER_AUDIOS -> listOf(MediaStore.Files.FileColumns.MEDIA_TYPE_AUDIO)
+            else -> listOf(
+                MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE,
+                MediaStore.Files.FileColumns.MEDIA_TYPE_VIDEO,
+                MediaStore.Files.FileColumns.MEDIA_TYPE_AUDIO,
+            )
+        }
+    }
+
+    private fun kindForMediaType(mediaType: Int): SyncedMediaKind? {
+        return when (mediaType) {
+            MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE -> SyncedMediaKind.IMAGE
+            MediaStore.Files.FileColumns.MEDIA_TYPE_VIDEO -> SyncedMediaKind.VIDEO
+            MediaStore.Files.FileColumns.MEDIA_TYPE_AUDIO -> SyncedMediaKind.AUDIO
+            else -> null
+        }
+    }
+
+    private fun titleForFilter(): String {
+        return when (mediaFilter) {
+            FILTER_IMAGES -> getString(R.string.synced_media_images_title)
+            FILTER_VIDEOS -> getString(R.string.synced_media_videos_title)
+            FILTER_AUDIOS -> getString(R.string.synced_media_audios_title)
+            else -> getString(R.string.synced_media_title)
+        }
+    }
+
+    private fun emptyTextForFilter(): String {
+        return when (mediaFilter) {
+            FILTER_IMAGES -> getString(R.string.synced_media_images_empty)
+            FILTER_VIDEOS -> getString(R.string.synced_media_videos_empty)
+            FILTER_AUDIOS -> getString(R.string.synced_media_audios_empty)
+            else -> getString(R.string.synced_media_empty)
+        }
+    }
+
+    companion object {
+        const val EXTRA_MEDIA_FILTER = "extra_media_filter"
+        const val FILTER_ALL = "all"
+        const val FILTER_IMAGES = "images"
+        const val FILTER_VIDEOS = "videos"
+        const val FILTER_AUDIOS = "audios"
     }
 }

@@ -25,12 +25,18 @@ import kotlinx.coroutines.withContext
 import java.text.DateFormat
 import java.util.Date
 
+enum class SyncedMediaKind {
+    IMAGE,
+    VIDEO,
+    AUDIO,
+}
+
 data class SyncedMediaItem(
     val id: Long,
     val contentUri: android.net.Uri,
     val displayName: String,
     val mimeType: String,
-    val isVideo: Boolean,
+    val kind: SyncedMediaKind,
     val takenAtMs: Long,
 )
 
@@ -73,7 +79,12 @@ class SyncedMediaAdapter(
 
             binding.tvName.text = item.displayName
             binding.tvMeta.text = formatTakenTime(item.takenAtMs)
-            binding.tvVideoBadge.visibility = if (item.isVideo) View.VISIBLE else View.GONE
+            binding.tvVideoBadge.visibility = if (item.kind == SyncedMediaKind.IMAGE) View.GONE else View.VISIBLE
+            binding.tvVideoBadge.text = when (item.kind) {
+                SyncedMediaKind.VIDEO -> "VIDEO"
+                SyncedMediaKind.AUDIO -> "AUDIO"
+                SyncedMediaKind.IMAGE -> ""
+            }
             binding.root.setOnClickListener { onItemClick(item) }
 
             thumbnailJob?.cancel()
@@ -92,8 +103,11 @@ class SyncedMediaAdapter(
                     } else {
                         binding.ivThumbnail.scaleType = ImageView.ScaleType.CENTER_INSIDE
                         binding.ivThumbnail.setImageResource(
-                            if (item.isVideo) android.R.drawable.ic_media_play
-                            else android.R.drawable.ic_menu_report_image
+                            when (item.kind) {
+                                SyncedMediaKind.VIDEO -> android.R.drawable.ic_media_play
+                                SyncedMediaKind.AUDIO -> android.R.drawable.ic_btn_speak_now
+                                SyncedMediaKind.IMAGE -> android.R.drawable.ic_menu_report_image
+                            }
                         )
                     }
                 }
@@ -108,13 +122,15 @@ class SyncedMediaAdapter(
     }
 
     private fun loadThumbnail(item: SyncedMediaItem): Bitmap? {
+        if (item.kind == SyncedMediaKind.AUDIO) return null
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             runCatching {
                 return context.contentResolver.loadThumbnail(item.contentUri, Size(420, 420), null)
             }
         }
 
-        if (item.isVideo) {
+        if (item.kind == SyncedMediaKind.VIDEO) {
             runCatching {
                 val retriever = MediaMetadataRetriever()
                 try {
@@ -158,7 +174,7 @@ class SyncedMediaAdapter(
     companion object {
         private val DIFF = object : DiffUtil.ItemCallback<SyncedMediaItem>() {
             override fun areItemsTheSame(oldItem: SyncedMediaItem, newItem: SyncedMediaItem): Boolean {
-                return oldItem.id == newItem.id && oldItem.isVideo == newItem.isVideo
+                return oldItem.id == newItem.id && oldItem.kind == newItem.kind
             }
 
             override fun areContentsTheSame(oldItem: SyncedMediaItem, newItem: SyncedMediaItem): Boolean {

@@ -55,6 +55,7 @@ import com.fersaiyan.cyanbridge.ui.CommunityPluginsActivity
 import com.fersaiyan.cyanbridge.ui.SettingsActivity
 // import com.fersaiyan.cyanbridge.ui.notes.NotesListActivity
 import com.fersaiyan.cyanbridge.ui.recordings.RecordingsListActivity
+import com.fersaiyan.cyanbridge.ui.recordings.SyncedMediaGalleryActivity
 import com.fersaiyan.cyanbridge.ui.BluetoothUtils
 import com.fersaiyan.cyanbridge.ui.BluetoothEvent
 import com.fersaiyan.cyanbridge.ui.AutoPairManager
@@ -565,6 +566,8 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             binding.btnVersion,
             binding.btnCamera,
             binding.btnTakePhotoAndDownload,
+            binding.btnTakeVideoAndDownload,
+            binding.btnTakeAudioAndDownload,
             binding.btnVideo,
             binding.btnRecord,
             binding.btnBt,
@@ -580,9 +583,9 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             binding.btnClearSyncLogs,
             binding.btnOtaInfo,
             binding.btnPullOtaTest,
-            binding.btnModeGemini,
-            binding.btnModeChatgpt,
-            binding.btnModeTasker,
+            binding.btnGalleryImages,
+            binding.btnGalleryVideos,
+            binding.btnGalleryAudios,
             binding.btnTestHijackVoice,
             binding.btnTestHijackImage,
             binding.btnToggleAdvanced,
@@ -646,29 +649,9 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                     triggerCliRelayImageCaptureAndQuery()
                 }
 
-                binding.btnModeGemini -> {
-                    aiAssistantMode = AI_MODE_GEMINI
-                    refreshAiModeButtons()
-                    Toast.makeText(this@MainActivity, "AI Mode: Google Gemini", Toast.LENGTH_SHORT).show()
-                }
-
-                binding.btnModeChatgpt -> {
-                    aiAssistantMode = AI_MODE_CHATGPT
-                    refreshAiModeButtons()
-                    Toast.makeText(this@MainActivity, "AI Mode: ChatGPT", Toast.LENGTH_SHORT).show()
-                }
-
-                binding.btnModeTasker -> {
-                    aiAssistantMode = AI_MODE_CHOSEN_PROVIDER
-                    refreshAiModeButtons()
-
-                    val msg = when (AutomationPrefs.getProviderType(this@MainActivity)) {
-                        AgentProviderType.TASKER -> "AI Mode: Chosen Provider (Tasker Broadcast)"
-                        AgentProviderType.PRO_SUBSCRIPTION -> "AI Mode: Chosen Provider (Pro Subscription)"
-                        AgentProviderType.LOCAL_AGENT -> "AI Mode: Chosen Provider (Local Agent)"
-                    }
-                    Toast.makeText(this@MainActivity, msg, Toast.LENGTH_SHORT).show()
-                }
+                binding.btnGalleryImages -> openSyncedMediaGallery(SyncedMediaGalleryActivity.FILTER_IMAGES)
+                binding.btnGalleryVideos -> openSyncedMediaGallery(SyncedMediaGalleryActivity.FILTER_VIDEOS)
+                binding.btnGalleryAudios -> openSyncedMediaGallery(SyncedMediaGalleryActivity.FILTER_AUDIOS)
 
                 // Notes & Summaries entry removed (moved to Transcriptions & recordings section)
 
@@ -786,6 +769,26 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
                 binding.btnTakePhotoAndDownload -> {
                     takePhotoAndDownload()
+                }
+
+                binding.btnTakeVideoAndDownload -> {
+                    takeTimedMediaAndDownload(
+                        mediaLabel = "Video",
+                        startCommand = byteArrayOf(0x02, 0x01, 0x02),
+                        stopCommand = byteArrayOf(0x02, 0x01, 0x03),
+                        recordingMs = 10_000L,
+                        saveWaitMs = 5_000L,
+                    )
+                }
+
+                binding.btnTakeAudioAndDownload -> {
+                    takeTimedMediaAndDownload(
+                        mediaLabel = "Audio",
+                        startCommand = byteArrayOf(0x02, 0x01, 0x08),
+                        stopCommand = byteArrayOf(0x02, 0x01, 0x0C),
+                        recordingMs = 10_000L,
+                        saveWaitMs = 4_000L,
+                    )
                 }
 
                 binding.btnVideo -> {
@@ -1336,14 +1339,13 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     }
 
     private fun refreshAiModeButtons() {
-        val activeColor = ContextCompat.getColor(this, R.color.titan_primary)
-        val inactiveColor = ContextCompat.getColor(this, R.color.titan_secondary_label)
-
-        binding.btnModeGemini.setTextColor(if (aiAssistantMode == AI_MODE_GEMINI) activeColor else inactiveColor)
-        binding.btnModeChatgpt.setTextColor(if (aiAssistantMode == AI_MODE_CHATGPT) activeColor else inactiveColor)
-        val chosenProviderSelected = aiAssistantMode == AI_MODE_CHOSEN_PROVIDER
-        binding.btnModeTasker.setTextColor(if (chosenProviderSelected) activeColor else inactiveColor)
         refreshAiQueryButtonsState()
+    }
+
+    private fun openSyncedMediaGallery(filter: String) {
+        startActivity(Intent(this, SyncedMediaGalleryActivity::class.java).apply {
+            putExtra(SyncedMediaGalleryActivity.EXTRA_MEDIA_FILTER, filter)
+        })
     }
 
     private fun sendAiBroadcast(type: String, path: String? = null, assistantMode: String = resolveEffectiveAiAssistantMode()) {
@@ -2288,13 +2290,8 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
 
     private fun updateConnectionStatus(connected: Boolean) {
-        val deviceName = DeviceManager.getInstance().deviceName
         val status = if (connected) {
-            if (!deviceName.isNullOrBlank()) {
-                "Connected - $deviceName"
-            } else {
-                "Connected"
-            }
+            "Smart Glass connected"
         } else {
             "Disconnected"
         }
@@ -2307,8 +2304,13 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private fun updateDeviceClassText() {
         val profile = DeviceProfileStore.loadLastSelected(this)
-        val classLabel = profile?.selectedClass?.displayName() ?: "Unknown"
-        binding.tvDeviceClass.text = "Class: $classLabel"
+        if (BleOperateManager.getInstance().isConnected) {
+            binding.tvDeviceClass.visibility = View.GONE
+        } else {
+            binding.tvDeviceClass.visibility = View.VISIBLE
+            val classLabel = profile?.selectedClass?.displayName() ?: "Unknown"
+            binding.tvDeviceClass.text = "Class: $classLabel"
+        }
 
         applyGlassesManagerGating(profile)
     }
@@ -3028,6 +3030,128 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             }
         }
         return withTimeoutOrNull(5_000) { deferred.await() }
+    }
+
+    private fun takeTimedMediaAndDownload(
+        mediaLabel: String,
+        startCommand: ByteArray,
+        stopCommand: ByteArray,
+        recordingMs: Long,
+        saveWaitMs: Long,
+    ) {
+        if (takePhotoAndDownloadJob?.isActive == true) {
+            Toast.makeText(this, "$mediaLabel and Download already running.", Toast.LENGTH_SHORT).show()
+            return
+        }
+        if (downloadAttemptJob?.isActive == true || downloadInProgress) {
+            Toast.makeText(this, "Sync already running. Stop it first.", Toast.LENGTH_LONG).show()
+            return
+        }
+        if (!BleOperateManager.getInstance().isConnected) {
+            Toast.makeText(this, "Bluetooth not connected. Connect glasses first.", Toast.LENGTH_LONG).show()
+            syncError("Take${mediaLabel}Download", "Bluetooth not connected")
+            return
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+            !XXPermissions.isGranted(this, "android.permission.NEARBY_WIFI_DEVICES")
+        ) {
+            requestNearbyWifiDevicesPermission(this, object : OnPermissionCallback {
+                override fun onGranted(permissions: MutableList<String>, all: Boolean) {
+                    if (all) {
+                        startTimedMediaAndDownloadInternal(mediaLabel, startCommand, stopCommand, recordingMs, saveWaitMs)
+                    } else {
+                        Toast.makeText(this@MainActivity, "Wi-Fi permission missing.", Toast.LENGTH_LONG).show()
+                    }
+                }
+
+                override fun onDenied(permissions: MutableList<String>, never: Boolean) {
+                    super.onDenied(permissions, never)
+                    syncWarn("Take${mediaLabel}Download", "NEARBY_WIFI_DEVICES denied: never=$never permissions=$permissions")
+                    if (never) {
+                        XXPermissions.startPermissionActivity(this@MainActivity, permissions)
+                    }
+                }
+            })
+            return
+        }
+
+        startTimedMediaAndDownloadInternal(mediaLabel, startCommand, stopCommand, recordingMs, saveWaitMs)
+    }
+
+    private fun startTimedMediaAndDownloadInternal(
+        mediaLabel: String,
+        startCommand: ByteArray,
+        stopCommand: ByteArray,
+        recordingMs: Long,
+        saveWaitMs: Long,
+    ) {
+        takePhotoAndDownloadJob = CoroutineScope(Dispatchers.Main).launch {
+            val tag = "Take${mediaLabel}Download"
+            Toast.makeText(this@MainActivity, "Recording $mediaLabel for 10 seconds...", Toast.LENGTH_SHORT).show()
+            setTransferUiVisible(true)
+            resetTransferUiState()
+            setTransferDetail("Starting $mediaLabel recording...")
+            syncInfo(tag, "Automation started: record $mediaLabel for ${recordingMs / 1000}s, then enable Wi-Fi/P2P sync")
+
+            val startResponse = sendTimedMediaCommandForDownload(
+                label = "Start $mediaLabel",
+                payload = startCommand,
+            )
+            syncInfo(tag, "Start $mediaLabel response: ${formatGlassControlResponse(startResponse)}")
+
+            setTransferDetail("Recording $mediaLabel... 10 seconds")
+            delay(recordingMs)
+
+            setTransferDetail("Stopping $mediaLabel recording...")
+            val stopResponse = sendTimedMediaCommandForDownload(
+                label = "Stop $mediaLabel before transfer",
+                payload = stopCommand,
+            )
+            syncInfo(tag, "Stop $mediaLabel response: ${formatGlassControlResponse(stopResponse)}")
+
+            setTransferDetail("Waiting for $mediaLabel to save on glasses...")
+            delay(saveWaitMs)
+            setTransferDetail("Starting Wi-Fi/P2P sync for new $mediaLabel...")
+            syncInfo(tag, "Starting Sync Data after $mediaLabel save wait")
+            startDataDownload()
+        }
+    }
+
+    private suspend fun sendTimedMediaCommandForDownload(
+        label: String,
+        payload: ByteArray,
+    ): GlassModelControlResponse? {
+        val deferred = CompletableDeferred<GlassModelControlResponse?>()
+        val command = commandToHex(payload)
+        try {
+            LargeDataHandler.getInstance().glassesControl(payload) { _, response ->
+                recordTechnicalSyncRow(
+                    action = label,
+                    uuid = bleWriteUuidLabel(),
+                    command = command,
+                    response = formatGlassControlResponse(response),
+                    status = if (response.errorCode == 0) "Confirmed" else "Non-fatal error",
+                )
+                if (!deferred.isCompleted) {
+                    deferred.complete(response)
+                }
+            }
+        } catch (t: Throwable) {
+            syncError("TimedMediaDownload", "$label command failed: ${t.message}", t)
+            if (!deferred.isCompleted) {
+                deferred.complete(null)
+            }
+        }
+        return withTimeoutOrNull(5_000) { deferred.await() }
+    }
+
+    private fun formatGlassControlResponse(response: GlassModelControlResponse?): String {
+        return if (response == null) {
+            "timeout/null response"
+        } else {
+            "dataType=${response.dataType}, errorCode=${response.errorCode}, workTypeIng=${response.workTypeIng}, p2pIp=${response.p2pIp}, image=${response.imageCount}, video=${response.videoCount}, record=${response.recordCount}"
+        }
     }
 
     private fun startDataDownload() {

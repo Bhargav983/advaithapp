@@ -9,6 +9,36 @@
     android:padding="16dp"
     android:fitsSystemWindows="true">
 
+    <LinearLayout
+        android:id="@+id/titan_brand_header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="12dp"
+        app:layout_constraintTop_toBottomOf="@id/meeting_recording_banner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_titan_main_logo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitCenter"
+            android:src="@drawable/titan_smart_app_logo" />
+
+        <TextView
+            android:id="@+id/tv_titan_main_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="Titan"
+            android:textColor="@color/titan_primary"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
     <!-- Meeting capture banner (visible while recording) -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/meeting_recording_banner"
@@ -56,7 +86,7 @@
         app:cardBackgroundColor="@color/titan_card_background"
         app:cardCornerRadius="12dp"
         app:cardElevation="4dp"
-        app:layout_constraintTop_toBottomOf="@id/meeting_recording_banner"
+        app:layout_constraintTop_toBottomOf="@id/titan_brand_header"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -331,12 +361,14 @@
                 android:textStyle="bold"
                 android:textSize="12sp"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="8dp" />
+                android:layout_marginBottom="8dp"
+                android:visibility="gone" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <Button
                     android:id="@+id/btn_meeting_start"
@@ -365,7 +397,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="8dp"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -389,7 +422,8 @@
                 android:text="Source: (not recording)"
                 android:textColor="@color/titan_secondary_label"
                 android:textSize="12sp"
-                android:layout_marginTop="4dp" />
+                android:layout_marginTop="4dp"
+                android:visibility="gone" />
 
             <!-- Notes & Summaries button removed (moved to Transcriptions & recordings section) -->
 
@@ -403,11 +437,11 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <!-- SECTION: AI ASSISTANT -->
+                <!-- SECTION: MEDIA DETAILS -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="AI ASSISTANT"
+                    android:text="MEDIA DETAILS"
                     android:textColor="@color/titan_primary"
                     android:textStyle="bold"
                     android:textSize="12sp"
@@ -442,15 +476,63 @@
                         android:buttonTint="@color/titan_primary"/>
                 </LinearLayout>
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_take_photo_and_download"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Take Photo and Download"
+                    android:text="Take Photo"
                     android:textAllCaps="false"
+                    android:textSize="13sp"
                     android:backgroundTint="@color/titan_primary_button_tint"
                     android:textColor="@color/titan_button_text"
-                    android:layout_marginTop="8dp"/>
+                    android:layout_marginTop="8dp"
+                    app:icon="@drawable/ic_download_24"
+                    app:iconGravity="textEnd"
+                    app:iconPadding="8dp"
+                    app:iconTint="@color/titan_button_text" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_take_video_and_download"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Take Video"
+                        android:textAllCaps="false"
+                        android:textSize="13sp"
+                        android:backgroundTint="@color/titan_secondary_button_tint"
+                        android:textColor="@color/titan_primary"
+                        app:icon="@drawable/ic_download_24"
+                        app:iconGravity="textEnd"
+                        app:iconPadding="6dp"
+                        app:iconTint="@color/titan_primary"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="wrap_content"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_take_audio_and_download"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Take Audio"
+                        android:textAllCaps="false"
+                        android:textSize="13sp"
+                        android:backgroundTint="@color/titan_secondary_button_tint"
+                        android:textColor="@color/titan_primary"
+                        app:icon="@drawable/ic_download_24"
+                        app:iconGravity="textEnd"
+                        app:iconPadding="6dp"
+                        app:iconTint="@color/titan_primary"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -458,42 +540,49 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/btn_mode_gemini"
+                        android:id="@+id/btn_gallery_images"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Gemini"
+                        android:text="Gallery for Images"
+                        android:textAllCaps="false"
                         android:backgroundTint="@color/titan_secondary_button_tint"
-                        android:textColor="@color/titan_primary"/>
+                        android:textColor="@color/titan_primary"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
                     <Space android:layout_width="8dp" android:layout_height="wrap_content"/>
 
                     <Button
-                        android:id="@+id/btn_mode_chatgpt"
+                        android:id="@+id/btn_gallery_videos"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="ChatGPT"
+                        android:text="Gallery for Videos"
+                        android:textAllCaps="false"
                         android:backgroundTint="@color/titan_secondary_button_tint"
-                        android:textColor="@color/titan_secondary_label"/>
+                        android:textColor="@color/titan_primary"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
                     <Space android:layout_width="8dp" android:layout_height="wrap_content"/>
 
                     <Button
-                        android:id="@+id/btn_mode_tasker"
+                        android:id="@+id/btn_gallery_audios"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Local/Pro/Tasker"
+                        android:text="Gallery for Audios"
+                        android:textAllCaps="false"
                         android:backgroundTint="@color/titan_secondary_button_tint"
-                        android:textColor="@color/titan_secondary_label"/>
+                        android:textColor="@color/titan_primary"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginTop="8dp">
+                    android:layout_marginTop="8dp"
+                    android:visibility="gone">
 
                     <Button
                         android:id="@+id/btn_test_hijack_voice"
@@ -913,6 +1002,26 @@
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_cts_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="50dp"
+        android:minHeight="50dp"
+        android:gravity="center"
+        android:text="CTS"
+        android:textColor="@color/titan_primary"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:letterSpacing="0.08"
+        android:background="@color/titan_primary_light"
+        android:paddingStart="10dp"
+        android:paddingTop="6dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
