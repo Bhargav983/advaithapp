@@ -123,6 +123,7 @@ class SyncedMediaAdapter(
 
     private fun loadThumbnail(item: SyncedMediaItem): Bitmap? {
         if (item.kind == SyncedMediaKind.AUDIO) return null
+        if (item.kind == SyncedMediaKind.IMAGE) return loadImageThumbnail(item)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             runCatching {
@@ -169,6 +170,42 @@ class SyncedMediaAdapter(
         }
 
         return null
+    }
+
+    private fun loadImageThumbnail(item: SyncedMediaItem): Bitmap? {
+        val bounds = BitmapFactory.Options().apply { inJustDecodeBounds = true }
+        runCatching {
+            context.contentResolver.openInputStream(item.contentUri)?.use { input ->
+                BitmapFactory.decodeStream(input, null, bounds)
+            }
+        }
+        if (bounds.outWidth <= 0 || bounds.outHeight <= 0) return null
+
+        val decodeOptions = BitmapFactory.Options().apply {
+            inSampleSize = calculateInSampleSize(bounds, 420, 420)
+            inPreferredConfig = Bitmap.Config.RGB_565
+        }
+        return runCatching {
+            context.contentResolver.openInputStream(item.contentUri)?.use { input ->
+                BitmapFactory.decodeStream(input, null, decodeOptions)
+            }
+        }.getOrNull()
+    }
+
+    private fun calculateInSampleSize(
+        options: BitmapFactory.Options,
+        reqWidth: Int,
+        reqHeight: Int,
+    ): Int {
+        var inSampleSize = 1
+        var halfHeight = options.outHeight / 2
+        var halfWidth = options.outWidth / 2
+
+        while ((halfHeight / inSampleSize) >= reqHeight && (halfWidth / inSampleSize) >= reqWidth) {
+            inSampleSize *= 2
+        }
+
+        return inSampleSize.coerceAtLeast(1)
     }
 
     companion object {

@@ -2,6 +2,7 @@ package com.fersaiyan.cyanbridge
 
 import android.Manifest
 import android.app.Activity
+import android.app.Dialog
 import android.bluetooth.BluetoothAdapter
 import android.content.BroadcastReceiver
 import android.content.ClipData
@@ -10,7 +11,10 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.location.LocationManager
+import android.media.MediaPlayer
 import android.widget.ArrayAdapter
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.fersaiyan.cyanbridge.agent.AgentProviderType
@@ -29,8 +33,17 @@ import com.fersaiyan.cyanbridge.media.autocapture.GlassesSyncedAudioIngestor
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
+import android.view.Gravity
 import android.view.View
+import android.view.ViewGroup
+import android.widget.FrameLayout
+import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.MediaController
+import android.widget.TextView
+import android.widget.Toast
+import android.widget.VideoView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AlertDialog
@@ -56,6 +69,7 @@ import com.fersaiyan.cyanbridge.ui.SettingsActivity
 // import com.fersaiyan.cyanbridge.ui.notes.NotesListActivity
 import com.fersaiyan.cyanbridge.ui.recordings.RecordingsListActivity
 import com.fersaiyan.cyanbridge.ui.recordings.SyncedMediaGalleryActivity
+import com.fersaiyan.cyanbridge.ui.recordings.SyncedMediaKind
 import com.fersaiyan.cyanbridge.ui.BluetoothUtils
 import com.fersaiyan.cyanbridge.ui.BluetoothEvent
 import com.fersaiyan.cyanbridge.ui.AutoPairManager
@@ -273,6 +287,9 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private var downloadTransferCallbackError: Int? = null
     private var downloadPausedForReconnect = false
     private var takePhotoAndDownloadJob: Job? = null
+    private var pendingAutoPreviewKind: SyncedMediaKind? = null
+    private var pendingAutoPreviewItem: PendingDownloadedPreview? = null
+    private var recentAudioPreviewPlayer: MediaPlayer? = null
     private var officialWifiNetworkCallback: ConnectivityManager.NetworkCallback? = null
     private var wifiCommandTestJob: Job? = null
     private var wifiCommandTestManager: WifiP2pManagerSingleton? = null
@@ -412,6 +429,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         wifiCommandTestJob?.cancel()
         takePhotoAndDownloadJob?.cancel()
         cleanupWifiCommandTest()
+        releaseRecentAudioPreviewPlayer()
         tts?.stop()
         tts?.shutdown()
     }
@@ -774,6 +792,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                 binding.btnTakeVideoAndDownload -> {
                     takeTimedMediaAndDownload(
                         mediaLabel = "Video",
+                        previewKind = SyncedMediaKind.VIDEO,
                         startCommand = byteArrayOf(0x02, 0x01, 0x02),
                         stopCommand = byteArrayOf(0x02, 0x01, 0x03),
                         recordingMs = 10_000L,
@@ -784,6 +803,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                 binding.btnTakeAudioAndDownload -> {
                     takeTimedMediaAndDownload(
                         mediaLabel = "Audio",
+                        previewKind = SyncedMediaKind.AUDIO,
                         startCommand = byteArrayOf(0x02, 0x01, 0x08),
                         stopCommand = byteArrayOf(0x02, 0x01, 0x0C),
                         recordingMs = 10_000L,
@@ -2982,6 +3002,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private fun startTakePhotoAndDownloadInternal() {
         takePhotoAndDownloadJob = CoroutineScope(Dispatchers.Main).launch {
+            beginPendingAutoPreview(SyncedMediaKind.IMAGE)
             Toast.makeText(this@MainActivity, "Taking photo, then syncing...", Toast.LENGTH_SHORT).show()
             setTransferUiVisible(true)
             resetTransferUiState()
@@ -3034,6 +3055,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private fun takeTimedMediaAndDownload(
         mediaLabel: String,
+        previewKind: SyncedMediaKind,
         startCommand: ByteArray,
         stopCommand: ByteArray,
         recordingMs: Long,
@@ -3059,7 +3081,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             requestNearbyWifiDevicesPermission(this, object : OnPermissionCallback {
                 override fun onGranted(permissions: MutableList<String>, all: Boolean) {
                     if (all) {
-                        startTimedMediaAndDownloadInternal(mediaLabel, startCommand, stopCommand, recordingMs, saveWaitMs)
+                        startTimedMediaAndDownloadInternal(mediaLabel, previewKind, startCommand, stopCommand, recordingMs, saveWaitMs)
                     } else {
                         Toast.makeText(this@MainActivity, "Wi-Fi permission missing.", Toast.LENGTH_LONG).show()
                     }
@@ -3076,17 +3098,19 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             return
         }
 
-        startTimedMediaAndDownloadInternal(mediaLabel, startCommand, stopCommand, recordingMs, saveWaitMs)
+        startTimedMediaAndDownloadInternal(mediaLabel, previewKind, startCommand, stopCommand, recordingMs, saveWaitMs)
     }
 
     private fun startTimedMediaAndDownloadInternal(
         mediaLabel: String,
+        previewKind: SyncedMediaKind,
         startCommand: ByteArray,
         stopCommand: ByteArray,
         recordingMs: Long,
         saveWaitMs: Long,
     ) {
         takePhotoAndDownloadJob = CoroutineScope(Dispatchers.Main).launch {
+            beginPendingAutoPreview(previewKind)
             val tag = "Take${mediaLabel}Download"
             Toast.makeText(this@MainActivity, "Recording $mediaLabel for 10 seconds...", Toast.LENGTH_SHORT).show()
             setTransferUiVisible(true)
@@ -4406,6 +4430,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                 } else {
                     showDownloadError("Download completed with errors: $totalSuccess successful, $totalFail failed")
                 }
+                showPendingAutoPreviewIfAny()
             }
         }
     }
@@ -4542,6 +4567,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             }
             if (saved != null && saved!!.success) {
                 syncInfo("DataDownload", "Saved JPG to gallery: name=$fileName uri=${saved!!.uri} bytes=${saved!!.bytes}")
+                rememberPendingAutoPreview(SyncedMediaKind.IMAGE, fileName, saved!!)
                 recordTechnicalSyncRow(
                     action = "Download Photo",
                     uuid = "HTTP, not BLE",
@@ -4580,6 +4606,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             }
             if (saved != null && saved!!.success) {
                 syncInfo("DataDownload", "Saved MP4 to gallery: name=$fileName uri=${saved!!.uri} bytes=${saved!!.bytes}")
+                rememberPendingAutoPreview(SyncedMediaKind.VIDEO, fileName, saved!!)
                 recordTechnicalSyncRow(
                     action = "Download Video",
                     uuid = "HTTP, not BLE",
@@ -4650,6 +4677,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                     }
                 }
                 Log.i("DataDownload", "Saved to library: name=$fileName uri=${saved!!.uri}")
+                rememberPendingAutoPreview(SyncedMediaKind.AUDIO, fileName, saved!!)
                 recordTechnicalSyncRow(
                     action = "Download Audio",
                     uuid = "HTTP, not BLE",
@@ -4680,6 +4708,227 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         val uri: String?,
         val bytes: Long,
     )
+
+    private data class PendingDownloadedPreview(
+        val kind: SyncedMediaKind,
+        val uri: Uri,
+        val displayName: String,
+        val takenAtMs: Long,
+    )
+
+    private fun beginPendingAutoPreview(kind: SyncedMediaKind) {
+        pendingAutoPreviewKind = kind
+        pendingAutoPreviewItem = null
+    }
+
+    private fun clearPendingAutoPreview() {
+        pendingAutoPreviewKind = null
+        pendingAutoPreviewItem = null
+    }
+
+    private fun rememberPendingAutoPreview(
+        kind: SyncedMediaKind,
+        displayName: String,
+        saved: GallerySaveResult,
+    ) {
+        if (pendingAutoPreviewKind != kind || !saved.success || saved.uri.isNullOrBlank()) return
+
+        val uri = runCatching { Uri.parse(saved.uri) }.getOrNull() ?: return
+        val takenAtMs = parseTakenTimeMillisFromFilename(displayName) ?: System.currentTimeMillis()
+        val current = pendingAutoPreviewItem
+        if (current == null || takenAtMs >= current.takenAtMs) {
+            pendingAutoPreviewItem = PendingDownloadedPreview(kind, uri, displayName, takenAtMs)
+        }
+    }
+
+    private fun showPendingAutoPreviewIfAny() {
+        val expectedKind = pendingAutoPreviewKind ?: return
+        val item = pendingAutoPreviewItem
+        clearPendingAutoPreview()
+
+        if (item == null) {
+            Toast.makeText(
+                this,
+                "No new ${labelForPreviewKind(expectedKind).lowercase(Locale.US)} downloaded to preview.",
+                Toast.LENGTH_SHORT,
+            ).show()
+            return
+        }
+
+        when (item.kind) {
+            SyncedMediaKind.IMAGE -> showRecentImagePreview(item)
+            SyncedMediaKind.VIDEO -> showRecentVideoPreview(item)
+            SyncedMediaKind.AUDIO -> showRecentAudioPreview(item)
+        }
+    }
+
+    private fun showRecentImagePreview(item: PendingDownloadedPreview) {
+        val dialog = createRecentMediaDialog()
+        val content = FrameLayout(this).apply {
+            setBackgroundColor(Color.rgb(16, 24, 28))
+        }
+        val imageView = ImageView(this).apply {
+            setImageURI(item.uri)
+            adjustViewBounds = true
+            scaleType = ImageView.ScaleType.FIT_CENTER
+        }
+        content.addView(
+            imageView,
+            FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT,
+            ).apply {
+                setMargins(previewDp(12), previewDp(56), previewDp(12), previewDp(24))
+            },
+        )
+        addPreviewCloseButton(content, dialog)
+        dialog.setContentView(content)
+        showRecentMediaDialog(dialog)
+    }
+
+    private fun showRecentVideoPreview(item: PendingDownloadedPreview) {
+        val dialog = createRecentMediaDialog()
+        val content = FrameLayout(this).apply {
+            setBackgroundColor(Color.rgb(16, 24, 28))
+        }
+        val videoView = VideoView(this).apply {
+            setVideoURI(item.uri)
+            val controls = MediaController(this@MainActivity)
+            controls.setAnchorView(this)
+            setMediaController(controls)
+            setOnPreparedListener { start() }
+        }
+        content.addView(
+            videoView,
+            FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT,
+            ).apply {
+                setMargins(previewDp(12), previewDp(56), previewDp(12), previewDp(24))
+            },
+        )
+        dialog.setOnDismissListener { videoView.stopPlayback() }
+        addPreviewCloseButton(content, dialog)
+        dialog.setContentView(content)
+        showRecentMediaDialog(dialog)
+    }
+
+    private fun showRecentAudioPreview(item: PendingDownloadedPreview) {
+        releaseRecentAudioPreviewPlayer()
+
+        val dialog = createRecentMediaDialog()
+        val content = FrameLayout(this).apply {
+            setBackgroundColor(Color.rgb(16, 24, 28))
+        }
+        val panel = LinearLayout(this).apply {
+            orientation = LinearLayout.VERTICAL
+            gravity = Gravity.CENTER
+            setPadding(previewDp(28), previewDp(28), previewDp(28), previewDp(28))
+        }
+        val title = TextView(this).apply {
+            text = "Playing recent audio"
+            textSize = 22f
+            setTextColor(Color.WHITE)
+            gravity = Gravity.CENTER
+        }
+        val name = TextView(this).apply {
+            text = item.displayName
+            textSize = 14f
+            setTextColor(Color.rgb(214, 232, 233))
+            gravity = Gravity.CENTER
+            setPadding(0, previewDp(12), 0, previewDp(20))
+        }
+        val toggle = android.widget.Button(this).apply {
+            text = "Pause"
+            setOnClickListener {
+                val player = recentAudioPreviewPlayer ?: return@setOnClickListener
+                if (player.isPlaying) {
+                    player.pause()
+                    text = "Play"
+                } else {
+                    player.start()
+                    text = "Pause"
+                }
+            }
+        }
+        panel.addView(title)
+        panel.addView(name)
+        panel.addView(toggle, LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT))
+        content.addView(
+            panel,
+            FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                Gravity.CENTER,
+            ),
+        )
+        addPreviewCloseButton(content, dialog)
+        dialog.setOnDismissListener { releaseRecentAudioPreviewPlayer() }
+        dialog.setContentView(content)
+        showRecentMediaDialog(dialog)
+
+        recentAudioPreviewPlayer = MediaPlayer.create(this, item.uri)?.apply {
+            setOnCompletionListener { toggle.text = "Play" }
+            start()
+        }
+        if (recentAudioPreviewPlayer == null) {
+            Toast.makeText(this, "Unable to play recent audio.", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun createRecentMediaDialog(): Dialog {
+        return Dialog(this).apply {
+            window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        }
+    }
+
+    private fun showRecentMediaDialog(dialog: Dialog) {
+        dialog.show()
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.window?.setLayout(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.MATCH_PARENT,
+        )
+    }
+
+    private fun addPreviewCloseButton(container: FrameLayout, dialog: Dialog) {
+        val closeButton = ImageButton(this).apply {
+            setImageResource(android.R.drawable.ic_menu_close_clear_cancel)
+            setBackgroundColor(Color.TRANSPARENT)
+            contentDescription = "Close"
+            setColorFilter(Color.WHITE)
+            setOnClickListener { dialog.dismiss() }
+        }
+        container.addView(
+            closeButton,
+            FrameLayout.LayoutParams(previewDp(48), previewDp(48), Gravity.TOP or Gravity.END).apply {
+                topMargin = previewDp(12)
+                rightMargin = previewDp(12)
+            },
+        )
+    }
+
+    private fun releaseRecentAudioPreviewPlayer() {
+        recentAudioPreviewPlayer?.let { player ->
+            runCatching {
+                if (player.isPlaying) player.stop()
+                player.release()
+            }
+        }
+        recentAudioPreviewPlayer = null
+    }
+
+    private fun labelForPreviewKind(kind: SyncedMediaKind): String {
+        return when (kind) {
+            SyncedMediaKind.IMAGE -> "Photo"
+            SyncedMediaKind.VIDEO -> "Video"
+            SyncedMediaKind.AUDIO -> "Audio"
+        }
+    }
+
+    private fun previewDp(value: Int): Int {
+        return (value * resources.displayMetrics.density).toInt()
+    }
 
     private fun parseTakenTimeMillisFromFilename(fileName: String): Long? {
         // The glasses filenames look like: yyyyMMddHHmmssSSS?.jpg
